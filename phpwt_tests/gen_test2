@@ -1,0 +1,26 @@
+#!/usr/bin/php
+<?php
+
+$test_file = $argv[1];
+$js_file = $test_file . '.js';
+$html_file = $test_file . '.html';
+
+echo "$test_file --> $js_file, $html_file.  generating...\n";
+
+$phpwt = dirname(__FILE__) . '/../php2js2.php';
+$cmd = sprintf( 'php %s %s > %s', escapeshellarg($phpwt), escapeshellarg($test_file), escapeshellarg( $js_file ) );
+my_exec( $cmd );
+
+$cmd = sprintf( "echo '<html><body><script src=\"%s\"></script><p style=\"margin-top: 40px;\"><a href=\"%s\">View JS Script Source (\"%s\")</p> <p><a href=\"%s\">View PHP Source</p> <p><a href=\"%s\">View PHP Output</p> </body></html>' > %s", escapeshellarg( $js_file ), escapeshellarg( $js_file ), escapeshellarg( $js_file ), escapeshellarg('./util/source.php?file='.urlencode($test_file)), escapeshellarg($test_file), escapeshellarg( $html_file ) );
+my_exec($cmd);
+
+echo "done!\n";
+
+function my_exec( $cmd ) {
+    passthru( $cmd, $rc );
+    if( $rc != 0 ) {
+        die( "command failed: $cmd\n");
+    }
+}
+
+?>

@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+$files = (count($argv) > 1) ? array( $argv[1] ) : glob( '*.js' );
+
+$passed = array();
+$failed = array();
+
+foreach( $files as $file ) {
+    $cmd = 'js ' . escapeshellarg($file);
+    $output = `$cmd`;
+    
+    echo "\n\n--- Results for $file ---\n";
+    
+    $groups = explode("<br><br>", trim($output));
+    //print_r( $groups ); continue;
+    foreach( $groups as $group ) {
+        $group = explode( "<br>", trim($group) );
+        if( count( $group ) == 2 ) {
+              list($desc, $result) = $group;
+//            print_r( $group ); continue;
+            $result = strstr( $result, 'pass' ) ? 'pass' : 'fail';
+            if( $result == 'pass') {
+                $passed[] = array( $file, $desc );
+            }
+            else {
+                $failed[] = array( $file, $desc );
+            }
+            echo "$result  |  $desc\n";
+        }
+        else {
+            // echo "Bad test output\n";
+        }
+    }
+}
+echo sprintf( "\n\n***  tests passed: %s   failed: %s  ***\n\n", count($passed), count($failed));
+
+print_r( $failed );
+
+?>

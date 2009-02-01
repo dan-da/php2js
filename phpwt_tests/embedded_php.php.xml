@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<AST:PHP_script xmlns:AST="http://www.phpcompiler.org/phc-1.1" xmlns:HIR="http://www.phpcompiler.org/phc-1.1" xmlns:MIR="http://www.phpcompiler.org/phc-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<attrs>
+		<attr key="phc.filename"><string>embedded_php.php</string></attr>
+	</attrs>
+	<AST:Statement_list>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>embedded_php.php</string></attr>
+				<attr key="phc.line_number"><integer>8</integer></attr>
+				<attr key="phc.unparser.is_inline_html"><bool>true</bool></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>embedded_php.php</string></attr>
+					<attr key="phc.line_number"><integer>8</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>echo</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+					<AST:Actual_parameter>
+						<attrs>
+							<attr key="phc.filename"><string>embedded_php.php</string></attr>
+							<attr key="phc.line_number"><integer>8</integer></attr>
+						</attrs>
+						<bool><!-- is_ref -->false</bool>
+						<AST:STRING>
+							<attrs>
+								<attr key="phc.filename"><string>embedded_php.php</string></attr>
+								<attr key="phc.line_number"><integer>8</integer></attr>
+								<attr key="phc.unparser.source_rep"><string encoding="base64">PGh0bWw+Cjxib2R5PgogICAgCjxoMz5QYWdlIFRpdGxlPC9oMz4KCjxhIGhyZWY9Imh0dHA6Ly9nb29nbGUuY29tIj5TZWFyY2ggb24gR29vZ2xlPC9hPjxici8+Cgo=</string></attr>
+							</attrs>
+							<value encoding="base64">PGh0bWw+Cjxib2R5PgogICAgCjxoMz5QYWdlIFRpdGxlPC9oMz4KCjxhIGhyZWY9Imh0dHA6Ly9nb29nbGUuY29tIj5TZWFyY2ggb24gR29vZ2xlPC9hPjxici8+Cgo=</value>
+						</AST:STRING>
+					</AST:Actual_parameter>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>embedded_php.php</string></attr>
+				<attr key="phc.line_number"><integer>10</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>embedded_php.php</string></attr>
+					<attr key="phc.line_number"><integer>10</integer></attr>
+					<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs>
+						<attr key="phc.filename"><string>embedded_php.php</string></attr>
+						<attr key="phc.line_number"><integer>10</integer></attr>
+					</attrs>
+					<value>echo</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+					<AST:Actual_parameter>
+						<attrs>
+							<attr key="phc.filename"><string>embedded_php.php</string></attr>
+							<attr key="phc.line_number"><integer>10</integer></attr>
+						</attrs>
+						<bool><!-- is_ref -->false</bool>
+						<AST:STRING>
+							<attrs>
+								<attr key="phc.filename"><string>embedded_php.php</string></attr>
+								<attr key="phc.line_number"><integer>10</integer></attr>
+								<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+								<attr key="phc.unparser.source_rep"><string>Page \"content\"</string></attr>
+							</attrs>
+							<value>Page "content"</value>
+						</AST:STRING>
+					</AST:Actual_parameter>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Nop>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>embedded_php.php</string></attr>
+				<attr key="phc.line_number"><integer>12</integer></attr>
+			</attrs>
+		</AST:Nop>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>embedded_php.php</string></attr>
+				<attr key="phc.line_number"><integer>14</integer></attr>
+				<attr key="phc.unparser.is_inline_html"><bool>true</bool></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>embedded_php.php</string></attr>
+					<attr key="phc.line_number"><integer>14</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>echo</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+					<AST:Actual_parameter>
+						<attrs>
+							<attr key="phc.filename"><string>embedded_php.php</string></attr>
+							<attr key="phc.line_number"><integer>14</integer></attr>
+						</attrs>
+						<bool><!-- is_ref -->false</bool>
+						<AST:STRING>
+							<attrs>
+								<attr key="phc.filename"><string>embedded_php.php</string></attr>
+								<attr key="phc.line_number"><integer>14</integer></attr>
+								<attr key="phc.unparser.source_rep"><string encoding="base64">ICAgIAo8L2JvZHk+CjwvaHRtbD4=</string></attr>
+							</attrs>
+							<value encoding="base64">ICAgIAo8L2JvZHk+CjwvaHRtbD4=</value>
+						</AST:STRING>
+					</AST:Actual_parameter>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+	</AST:Statement_list>
+</AST:PHP_script>

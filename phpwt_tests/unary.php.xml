@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<AST:PHP_script xmlns:AST="http://www.phpcompiler.org/phc-1.1" xmlns:HIR="http://www.phpcompiler.org/phc-1.1" xmlns:MIR="http://www.phpcompiler.org/phc-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<attrs>
+		<attr key="phc.filename"><string>unary.php</string></attr>
+	</attrs>
+	<AST:Statement_list>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>unary.php</string></attr>
+				<attr key="phc.line_number"><integer>3</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>unary.php</string></attr>
+					<attr key="phc.line_number"><integer>3</integer></attr>
+					<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs>
+						<attr key="phc.filename"><string>unary.php</string></attr>
+						<attr key="phc.line_number"><integer>3</integer></attr>
+					</attrs>
+					<value>echo</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+					<AST:Actual_parameter>
+						<attrs>
+							<attr key="phc.filename"><string>unary.php</string></attr>
+							<attr key="phc.line_number"><integer>3</integer></attr>
+						</attrs>
+						<bool><!-- is_ref -->false</bool>
+						<AST:STRING>
+							<attrs>
+								<attr key="phc.filename"><string>unary.php</string></attr>
+								<attr key="phc.line_number"><integer>3</integer></attr>
+								<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+								<attr key="phc.unparser.source_rep"><string encoding="base64">VGVzdCB0aGF0ICEgb3BlcmF0b3Igd29ya3MuPGJyPlxu</string></attr>
+							</attrs>
+							<value encoding="base64">VGVzdCB0aGF0ICEgb3BlcmF0b3Igd29ya3MuPGJyPgo=</value>
+						</AST:STRING>
+					</AST:Actual_parameter>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>unary.php</string></attr>
+				<attr key="phc.line_number"><integer>4</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>unary.php</string></attr>
+					<attr key="phc.line_number"><integer>4</integer></attr>
+					<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs>
+						<attr key="phc.filename"><string>unary.php</string></attr>
+						<attr key="phc.line_number"><integer>4</integer></attr>
+					</attrs>
+					<value>echo</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+					<AST:Actual_parameter>
+						<attrs>
+							<attr key="phc.filename"><string>unary.php</string></attr>
+							<attr key="phc.line_number"><integer>4</integer></attr>
+						</attrs>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Bin_op>
+							<attrs>
+								<attr key="phc.filename"><string>unary.php</string></attr>
+								<attr key="phc.line_number"><integer>4</integer></attr>
+								<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+							</attrs>
+							<AST:Bin_op>
+								<attrs>
+									<attr key="phc.filename"><string>unary.php</string></attr>
+									<attr key="phc.line_number"><integer>4</integer></attr>
+									<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+								</attrs>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>unary.php</string></attr>
+										<attr key="phc.line_number"><integer>4</integer></attr>
+										<attr key="phc.unparser.source_rep"><string>Result: </string></attr>
+									</attrs>
+									<value>Result: </value>
+								</AST:STRING>
+								<AST:OP>
+									<attrs>
+										<attr key="phc.filename"><string>unary.php</string></attr>
+										<attr key="phc.line_number"><integer>4</integer></attr>
+									</attrs>
+									<value>.</value>
+								</AST:OP>
+								<AST:Conditional_expr>
+									<attrs>
+										<attr key="phc.filename"><string>unary.php</string></attr>
+										<attr key="phc.line_number"><integer>4</integer></attr>
+										<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>unary.php</string></attr>
+											<attr key="phc.line_number"><integer>4</integer></attr>
+											<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:Unary_op>
+											<attrs>
+												<attr key="phc.filename"><string>unary.php</string></attr>
+												<attr key="phc.line_number"><integer>4</integer></attr>
+											</attrs>
+											<AST:OP>
+												<attrs>
+													<attr key="phc.filename"><string>unary.php</string></attr>
+													<attr key="phc.line_number"><integer>4</integer></attr>
+												</attrs>
+												<value>!</value>
+											</AST:OP>
+											<AST:BOOL>
+												<attrs>
+													<attr key="phc.filename"><string>unary.php</string></attr>
+													<attr key="phc.line_number"><integer>4</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>false</string></attr>
+												</attrs>
+												<value>False</value>
+											</AST:BOOL>
+										</AST:Unary_op>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>unary.php</string></attr>
+												<attr key="phc.line_number"><integer>4</integer></attr>
+											</attrs>
+											<value>==</value>
+										</AST:OP>
+										<AST:BOOL>
+											<attrs>
+												<attr key="phc.filename"><string>unary.php</string></attr>
+												<attr key="phc.line_number"><integer>4</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>true</string></attr>
+											</attrs>
+											<value>True</value>
+										</AST:BOOL>
+									</AST:Bin_op>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>unary.php</string></attr>
+											<attr key="phc.line_number"><integer>4</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+										</attrs>
+										<value>pass</value>
+									</AST:STRING>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>unary.php</string></attr>
+											<attr key="phc.line_number"><integer>4</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+										</attrs>
+										<value>fail</value>
+									</AST:STRING>
+								</AST:Conditional_expr>
+							</AST:Bin_op>
+							<AST:OP>
+								<attrs>
+									<attr key="phc.filename"><string>unary.php</string></attr>
+									<attr key="phc.line_number"><integer>4</integer></attr>
+								</attrs>
+								<value>.</value>
+							</AST:OP>
+							<AST:STRING>
+								<attrs>
+									<attr key="phc.filename"><string>unary.php</string></attr>
+									<attr key="phc.line_number"><integer>4</integer></attr>
+									<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+									<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+								</attrs>
+								<value encoding="base64">PGJyPjxicj4KCg==</value>
+							</AST:STRING>
+						</AST:Bin_op>
+					</AST:Actual_parameter>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Nop>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>unary.php</string></attr>
+				<attr key="phc.line_number"><integer>6</integer></attr>
+			</attrs>
+		</AST:Nop>
+	</AST:Statement_list>
+</AST:PHP_script>

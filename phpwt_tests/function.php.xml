@@ -1,0 +1,2178 @@
+<?xml version="1.0"?>
+<AST:PHP_script xmlns:AST="http://www.phpcompiler.org/phc-1.1" xmlns:HIR="http://www.phpcompiler.org/phc-1.1" xmlns:MIR="http://www.phpcompiler.org/phc-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<attrs>
+		<attr key="phc.filename"><string>function.php</string></attr>
+	</attrs>
+	<AST:Statement_list>
+		<AST:Method>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>					<string></string>					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>5</integer></attr>
+			</attrs>
+			<AST:Signature>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>13</integer></attr>
+				</attrs>
+				<AST:Method_mod>
+					<attrs />
+					<bool><!-- is_public -->false</bool>
+					<bool><!-- is_protected -->false</bool>
+					<bool><!-- is_private -->false</bool>
+					<bool><!-- is_static -->false</bool>
+					<bool><!-- is_abstract -->false</bool>
+					<bool><!-- is_final -->false</bool>
+				</AST:Method_mod>
+				<bool><!-- is_ref -->false</bool>
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test1</value>
+				</AST:METHOD_NAME>
+				<AST:Formal_parameter_list>
+				</AST:Formal_parameter_list>
+			</AST:Signature>
+			<AST:Statement_list>
+				<AST:Method>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>6</integer></attr>
+					</attrs>
+					<AST:Signature>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>8</integer></attr>
+						</attrs>
+						<AST:Method_mod>
+							<attrs />
+							<bool><!-- is_public -->false</bool>
+							<bool><!-- is_protected -->false</bool>
+							<bool><!-- is_private -->false</bool>
+							<bool><!-- is_static -->false</bool>
+							<bool><!-- is_abstract -->false</bool>
+							<bool><!-- is_final -->false</bool>
+						</AST:Method_mod>
+						<bool><!-- is_ref -->false</bool>
+						<AST:METHOD_NAME>
+							<attrs />
+							<value>say_hi</value>
+						</AST:METHOD_NAME>
+						<AST:Formal_parameter_list>
+							<AST:Formal_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>6</integer></attr>
+								</attrs>
+								<AST:Type>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>6</integer></attr>
+									</attrs>
+									<AST:CLASS_NAME xsi:nil="true" />
+								</AST:Type>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Name_with_default>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>6</integer></attr>
+									</attrs>
+									<AST:VARIABLE_NAME>
+										<attrs />
+										<value>fname</value>
+									</AST:VARIABLE_NAME>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>6</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>John</string></attr>
+										</attrs>
+										<value>John</value>
+									</AST:STRING>
+								</AST:Name_with_default>
+							</AST:Formal_parameter>
+							<AST:Formal_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>6</integer></attr>
+								</attrs>
+								<AST:Type>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>6</integer></attr>
+									</attrs>
+									<AST:CLASS_NAME xsi:nil="true" />
+								</AST:Type>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Name_with_default>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>6</integer></attr>
+									</attrs>
+									<AST:VARIABLE_NAME>
+										<attrs />
+										<value>lname</value>
+									</AST:VARIABLE_NAME>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>6</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>Doe</string></attr>
+										</attrs>
+										<value>Doe</value>
+									</AST:STRING>
+								</AST:Name_with_default>
+							</AST:Formal_parameter>
+						</AST:Formal_parameter_list>
+					</AST:Signature>
+					<AST:Statement_list>
+						<AST:Return>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>7</integer></attr>
+							</attrs>
+							<AST:Bin_op>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>7</integer></attr>
+									<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+								</attrs>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>7</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>7</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:Bin_op>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>7</integer></attr>
+												<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>7</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>hi </string></attr>
+												</attrs>
+												<value>hi </value>
+											</AST:STRING>
+											<AST:OP>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>7</integer></attr>
+													<attr key="phc.unparser.in_string_syntax.simple"><bool>true</bool></attr>
+												</attrs>
+												<value>.</value>
+											</AST:OP>
+											<AST:Variable>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>7</integer></attr>
+												</attrs>
+												<AST:Target xsi:nil="true" />
+												<AST:VARIABLE_NAME>
+													<attrs />
+													<value>fname</value>
+												</AST:VARIABLE_NAME>
+												<AST:Expr_list>
+												</AST:Expr_list>
+											</AST:Variable>
+										</AST:Bin_op>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>7</integer></attr>
+												<attr key="phc.unparser.in_string_syntax.simple"><bool>true</bool></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>7</integer></attr>
+												<attr key="phc.unparser.source_rep"><string> </string></attr>
+											</attrs>
+											<value> </value>
+										</AST:STRING>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>7</integer></attr>
+											<attr key="phc.unparser.in_string_syntax.simple"><bool>true</bool></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:Variable>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>7</integer></attr>
+										</attrs>
+										<AST:Target xsi:nil="true" />
+										<AST:VARIABLE_NAME>
+											<attrs />
+											<value>lname</value>
+										</AST:VARIABLE_NAME>
+										<AST:Expr_list>
+										</AST:Expr_list>
+									</AST:Variable>
+								</AST:Bin_op>
+								<AST:OP>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>7</integer></attr>
+										<attr key="phc.unparser.in_string_syntax.simple"><bool>true</bool></attr>
+									</attrs>
+									<value>.</value>
+								</AST:OP>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>7</integer></attr>
+										<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+										<attr key="phc.unparser.source_rep"><string></string></attr>
+									</attrs>
+									<value></value>
+								</AST:STRING>
+							</AST:Bin_op>
+						</AST:Return>
+					</AST:Statement_list>
+				</AST:Method>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>9</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>9</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>9</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>result1</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Method_invocation>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>9</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:METHOD_NAME>
+								<attrs />
+								<value>say_hi</value>
+							</AST:METHOD_NAME>
+							<AST:Actual_parameter_list>
+							</AST:Actual_parameter_list>
+						</AST:Method_invocation>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>10</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>10</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>10</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>result2</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Method_invocation>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>10</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:METHOD_NAME>
+								<attrs />
+								<value>say_hi</value>
+							</AST:METHOD_NAME>
+							<AST:Actual_parameter_list>
+								<AST:Actual_parameter>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>10</integer></attr>
+									</attrs>
+									<bool><!-- is_ref -->false</bool>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>10</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>Daffy</string></attr>
+										</attrs>
+										<value>Daffy</value>
+									</AST:STRING>
+								</AST:Actual_parameter>
+								<AST:Actual_parameter>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>10</integer></attr>
+									</attrs>
+									<bool><!-- is_ref -->false</bool>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>10</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>Duck</string></attr>
+										</attrs>
+										<value>Duck</value>
+									</AST:STRING>
+								</AST:Actual_parameter>
+							</AST:Actual_parameter_list>
+						</AST:Method_invocation>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>11</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>11</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>11</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>11</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>11</integer></attr>
+										<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+										<attr key="phc.unparser.source_rep"><string encoding="base64">VGVzdCB0aGF0IGRlZmF1bHQgZnVuY3Rpb24gcGFyYW1ldGVycyB3b3JrIGFzIGV4cGVjdGVkLjxicj5cbg==</string></attr>
+									</attrs>
+									<value encoding="base64">VGVzdCB0aGF0IGRlZmF1bHQgZnVuY3Rpb24gcGFyYW1ldGVycyB3b3JrIGFzIGV4cGVjdGVkLjxicj4K</value>
+								</AST:STRING>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>12</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>12</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>12</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>12</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>12</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>12</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>12</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>result: </string></attr>
+											</attrs>
+											<value>result: </value>
+										</AST:STRING>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>12</integer></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:Conditional_expr>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>12</integer></attr>
+												<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:Bin_op>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>12</integer></attr>
+													<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+												</attrs>
+												<AST:Bin_op>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>12</integer></attr>
+														<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+													</attrs>
+													<AST:Variable>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>12</integer></attr>
+														</attrs>
+														<AST:Target xsi:nil="true" />
+														<AST:VARIABLE_NAME>
+															<attrs />
+															<value>result1</value>
+														</AST:VARIABLE_NAME>
+														<AST:Expr_list>
+														</AST:Expr_list>
+													</AST:Variable>
+													<AST:OP>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>12</integer></attr>
+														</attrs>
+														<value>==</value>
+													</AST:OP>
+													<AST:STRING>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>12</integer></attr>
+															<attr key="phc.unparser.source_rep"><string>hi John Doe</string></attr>
+														</attrs>
+														<value>hi John Doe</value>
+													</AST:STRING>
+												</AST:Bin_op>
+												<AST:OP>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>12</integer></attr>
+													</attrs>
+													<value encoding="base64">JiY=</value>
+												</AST:OP>
+												<AST:Bin_op>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>12</integer></attr>
+														<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+													</attrs>
+													<AST:Variable>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>12</integer></attr>
+														</attrs>
+														<AST:Target xsi:nil="true" />
+														<AST:VARIABLE_NAME>
+															<attrs />
+															<value>result2</value>
+														</AST:VARIABLE_NAME>
+														<AST:Expr_list>
+														</AST:Expr_list>
+													</AST:Variable>
+													<AST:OP>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>12</integer></attr>
+														</attrs>
+														<value>==</value>
+													</AST:OP>
+													<AST:STRING>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>12</integer></attr>
+															<attr key="phc.unparser.source_rep"><string>hi Daffy Duck</string></attr>
+														</attrs>
+														<value>hi Daffy Duck</value>
+													</AST:STRING>
+												</AST:Bin_op>
+											</AST:Bin_op>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>12</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+												</attrs>
+												<value>pass</value>
+											</AST:STRING>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>12</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+												</attrs>
+												<value>fail</value>
+											</AST:STRING>
+										</AST:Conditional_expr>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>12</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>12</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPjxicj4KCg==</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+			</AST:Statement_list>
+		</AST:Method>
+		<AST:Method>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>16</integer></attr>
+			</attrs>
+			<AST:Signature>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>23</integer></attr>
+				</attrs>
+				<AST:Method_mod>
+					<attrs />
+					<bool><!-- is_public -->false</bool>
+					<bool><!-- is_protected -->false</bool>
+					<bool><!-- is_private -->false</bool>
+					<bool><!-- is_static -->false</bool>
+					<bool><!-- is_abstract -->false</bool>
+					<bool><!-- is_final -->false</bool>
+				</AST:Method_mod>
+				<bool><!-- is_ref -->false</bool>
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test2</value>
+				</AST:METHOD_NAME>
+				<AST:Formal_parameter_list>
+				</AST:Formal_parameter_list>
+			</AST:Signature>
+			<AST:Statement_list>
+				<AST:Method>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>17</integer></attr>
+					</attrs>
+					<AST:Signature>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>19</integer></attr>
+						</attrs>
+						<AST:Method_mod>
+							<attrs />
+							<bool><!-- is_public -->false</bool>
+							<bool><!-- is_protected -->false</bool>
+							<bool><!-- is_private -->false</bool>
+							<bool><!-- is_static -->false</bool>
+							<bool><!-- is_abstract -->false</bool>
+							<bool><!-- is_final -->false</bool>
+						</AST:Method_mod>
+						<bool><!-- is_ref -->false</bool>
+						<AST:METHOD_NAME>
+							<attrs />
+							<value>func</value>
+						</AST:METHOD_NAME>
+						<AST:Formal_parameter_list>
+							<AST:Formal_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>17</integer></attr>
+								</attrs>
+								<AST:Type>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>17</integer></attr>
+									</attrs>
+									<AST:CLASS_NAME xsi:nil="true" />
+								</AST:Type>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Name_with_default>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>17</integer></attr>
+									</attrs>
+									<AST:VARIABLE_NAME>
+										<attrs />
+										<value>fname</value>
+									</AST:VARIABLE_NAME>
+									<AST:Array>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>17</integer></attr>
+										</attrs>
+										<AST:Array_elem_list>
+											<AST:Array_elem>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>17</integer></attr>
+												</attrs>
+												<AST:Expr xsi:nil="true" />
+												<bool><!-- is_ref -->false</bool>
+												<AST:STRING>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>17</integer></attr>
+														<attr key="phc.unparser.source_rep"><string>ball</string></attr>
+													</attrs>
+													<value>ball</value>
+												</AST:STRING>
+											</AST:Array_elem>
+										</AST:Array_elem_list>
+									</AST:Array>
+								</AST:Name_with_default>
+							</AST:Formal_parameter>
+						</AST:Formal_parameter_list>
+					</AST:Signature>
+					<AST:Statement_list>
+						<AST:Return>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>18</integer></attr>
+							</attrs>
+							<AST:Variable>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>18</integer></attr>
+								</attrs>
+								<AST:Target xsi:nil="true" />
+								<AST:VARIABLE_NAME>
+									<attrs />
+									<value>fname</value>
+								</AST:VARIABLE_NAME>
+								<AST:Expr_list>
+								</AST:Expr_list>
+							</AST:Variable>
+						</AST:Return>
+					</AST:Statement_list>
+				</AST:Method>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>20</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>20</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>20</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>result1</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Method_invocation>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>20</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:METHOD_NAME>
+								<attrs />
+								<value>func</value>
+							</AST:METHOD_NAME>
+							<AST:Actual_parameter_list>
+							</AST:Actual_parameter_list>
+						</AST:Method_invocation>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>21</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>21</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>21</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>21</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>21</integer></attr>
+										<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+										<attr key="phc.unparser.source_rep"><string encoding="base64">VGVzdCB0aGF0IGVtcHR5IGFycmF5IGRlZmF1bHQgcGFyYW1ldGVyIHdvcmtzIGFzIGV4cGVjdGVkLjxicj5cbg==</string></attr>
+									</attrs>
+									<value encoding="base64">VGVzdCB0aGF0IGVtcHR5IGFycmF5IGRlZmF1bHQgcGFyYW1ldGVyIHdvcmtzIGFzIGV4cGVjdGVkLjxicj4K</value>
+								</AST:STRING>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>22</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>22</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>22</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>22</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>22</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>22</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>22</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>result: </string></attr>
+											</attrs>
+											<value>result: </value>
+										</AST:STRING>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>22</integer></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:Conditional_expr>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>22</integer></attr>
+												<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:Bin_op>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>22</integer></attr>
+													<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+												</attrs>
+												<AST:Variable>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>22</integer></attr>
+													</attrs>
+													<AST:Target xsi:nil="true" />
+													<AST:VARIABLE_NAME>
+														<attrs />
+														<value>result1</value>
+													</AST:VARIABLE_NAME>
+													<AST:Expr_list>
+														<AST:INT>
+															<attrs>
+																<attr key="phc.filename"><string>function.php</string></attr>
+																<attr key="phc.line_number"><integer>22</integer></attr>
+																<attr key="phc.unparser.source_rep"><string>0</string></attr>
+															</attrs>
+															<value>0</value>
+														</AST:INT>
+													</AST:Expr_list>
+												</AST:Variable>
+												<AST:OP>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>22</integer></attr>
+													</attrs>
+													<value>==</value>
+												</AST:OP>
+												<AST:STRING>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>22</integer></attr>
+														<attr key="phc.unparser.source_rep"><string>ball</string></attr>
+													</attrs>
+													<value>ball</value>
+												</AST:STRING>
+											</AST:Bin_op>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>22</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+												</attrs>
+												<value>pass</value>
+											</AST:STRING>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>22</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+												</attrs>
+												<value>fail</value>
+											</AST:STRING>
+										</AST:Conditional_expr>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>22</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>22</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPjxicj4KCg==</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+			</AST:Statement_list>
+		</AST:Method>
+		<AST:Method>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>26</integer></attr>
+			</attrs>
+			<AST:Signature>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>41</integer></attr>
+				</attrs>
+				<AST:Method_mod>
+					<attrs />
+					<bool><!-- is_public -->false</bool>
+					<bool><!-- is_protected -->false</bool>
+					<bool><!-- is_private -->false</bool>
+					<bool><!-- is_static -->false</bool>
+					<bool><!-- is_abstract -->false</bool>
+					<bool><!-- is_final -->false</bool>
+				</AST:Method_mod>
+				<bool><!-- is_ref -->false</bool>
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test3</value>
+				</AST:METHOD_NAME>
+				<AST:Formal_parameter_list>
+				</AST:Formal_parameter_list>
+			</AST:Signature>
+			<AST:Statement_list>
+				<AST:If>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>28</integer></attr>
+					</attrs>
+					<AST:BOOL>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>28</integer></attr>
+							<attr key="phc.unparser.source_rep"><string>true</string></attr>
+						</attrs>
+						<value>True</value>
+					</AST:BOOL>
+					<AST:Statement_list>
+						<AST:Method>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>29</integer></attr>
+							</attrs>
+							<AST:Signature>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>31</integer></attr>
+								</attrs>
+								<AST:Method_mod>
+									<attrs />
+									<bool><!-- is_public -->false</bool>
+									<bool><!-- is_protected -->false</bool>
+									<bool><!-- is_private -->false</bool>
+									<bool><!-- is_static -->false</bool>
+									<bool><!-- is_abstract -->false</bool>
+									<bool><!-- is_final -->false</bool>
+								</AST:Method_mod>
+								<bool><!-- is_ref -->false</bool>
+								<AST:METHOD_NAME>
+									<attrs />
+									<value>func3</value>
+								</AST:METHOD_NAME>
+								<AST:Formal_parameter_list>
+								</AST:Formal_parameter_list>
+							</AST:Signature>
+							<AST:Statement_list>
+								<AST:Return>
+									<attrs>
+										<attr key="phc.comments"><string_list>
+										</string_list></attr>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>30</integer></attr>
+									</attrs>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>30</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>called func3</string></attr>
+										</attrs>
+										<value>called func3</value>
+									</AST:STRING>
+								</AST:Return>
+							</AST:Statement_list>
+						</AST:Method>
+					</AST:Statement_list>
+					<AST:Statement_list>
+						<AST:Method>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>34</integer></attr>
+							</attrs>
+							<AST:Signature>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>36</integer></attr>
+								</attrs>
+								<AST:Method_mod>
+									<attrs />
+									<bool><!-- is_public -->false</bool>
+									<bool><!-- is_protected -->false</bool>
+									<bool><!-- is_private -->false</bool>
+									<bool><!-- is_static -->false</bool>
+									<bool><!-- is_abstract -->false</bool>
+									<bool><!-- is_final -->false</bool>
+								</AST:Method_mod>
+								<bool><!-- is_ref -->false</bool>
+								<AST:METHOD_NAME>
+									<attrs />
+									<value>func3</value>
+								</AST:METHOD_NAME>
+								<AST:Formal_parameter_list>
+								</AST:Formal_parameter_list>
+							</AST:Signature>
+							<AST:Statement_list>
+								<AST:Return>
+									<attrs>
+										<attr key="phc.comments"><string_list>
+										</string_list></attr>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>35</integer></attr>
+									</attrs>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>35</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>did not call func3</string></attr>
+										</attrs>
+										<value>did not call func3</value>
+									</AST:STRING>
+								</AST:Return>
+							</AST:Statement_list>
+						</AST:Method>
+					</AST:Statement_list>
+				</AST:If>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>38</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>38</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>38</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>result1</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Method_invocation>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>38</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:METHOD_NAME>
+								<attrs />
+								<value>func3</value>
+							</AST:METHOD_NAME>
+							<AST:Actual_parameter_list>
+							</AST:Actual_parameter_list>
+						</AST:Method_invocation>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>39</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>39</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>39</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>39</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>39</integer></attr>
+										<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+										<attr key="phc.unparser.source_rep"><string encoding="base64">VGVzdCB0aGF0IGZ1bmN0aW9uIG1heSBiZSBjb25kaXRpb25hbGx5IGRlZmluZWQuPGJyPlxu</string></attr>
+									</attrs>
+									<value encoding="base64">VGVzdCB0aGF0IGZ1bmN0aW9uIG1heSBiZSBjb25kaXRpb25hbGx5IGRlZmluZWQuPGJyPgo=</value>
+								</AST:STRING>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>40</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>40</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>40</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>40</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>40</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>40</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>40</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>result: </string></attr>
+											</attrs>
+											<value>result: </value>
+										</AST:STRING>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>40</integer></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:Conditional_expr>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>40</integer></attr>
+												<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:Bin_op>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>40</integer></attr>
+													<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+												</attrs>
+												<AST:Variable>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>40</integer></attr>
+													</attrs>
+													<AST:Target xsi:nil="true" />
+													<AST:VARIABLE_NAME>
+														<attrs />
+														<value>result1</value>
+													</AST:VARIABLE_NAME>
+													<AST:Expr_list>
+													</AST:Expr_list>
+												</AST:Variable>
+												<AST:OP>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>40</integer></attr>
+													</attrs>
+													<value>==</value>
+												</AST:OP>
+												<AST:STRING>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>40</integer></attr>
+														<attr key="phc.unparser.source_rep"><string>called func3</string></attr>
+													</attrs>
+													<value>called func3</value>
+												</AST:STRING>
+											</AST:Bin_op>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>40</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+												</attrs>
+												<value>pass</value>
+											</AST:STRING>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>40</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+												</attrs>
+												<value>fail</value>
+											</AST:STRING>
+										</AST:Conditional_expr>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>40</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>40</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPjxicj4KCg==</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+			</AST:Statement_list>
+		</AST:Method>
+		<AST:Method>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>44</integer></attr>
+			</attrs>
+			<AST:Signature>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>52</integer></attr>
+				</attrs>
+				<AST:Method_mod>
+					<attrs />
+					<bool><!-- is_public -->false</bool>
+					<bool><!-- is_protected -->false</bool>
+					<bool><!-- is_private -->false</bool>
+					<bool><!-- is_static -->false</bool>
+					<bool><!-- is_abstract -->false</bool>
+					<bool><!-- is_final -->false</bool>
+				</AST:Method_mod>
+				<bool><!-- is_ref -->false</bool>
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test4</value>
+				</AST:METHOD_NAME>
+				<AST:Formal_parameter_list>
+				</AST:Formal_parameter_list>
+			</AST:Signature>
+			<AST:Statement_list>
+				<AST:Method>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>45</integer></attr>
+					</attrs>
+					<AST:Signature>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>47</integer></attr>
+						</attrs>
+						<AST:Method_mod>
+							<attrs />
+							<bool><!-- is_public -->false</bool>
+							<bool><!-- is_protected -->false</bool>
+							<bool><!-- is_private -->false</bool>
+							<bool><!-- is_static -->false</bool>
+							<bool><!-- is_abstract -->false</bool>
+							<bool><!-- is_final -->false</bool>
+						</AST:Method_mod>
+						<bool><!-- is_ref -->false</bool>
+						<AST:METHOD_NAME>
+							<attrs />
+							<value>func4</value>
+						</AST:METHOD_NAME>
+						<AST:Formal_parameter_list>
+						</AST:Formal_parameter_list>
+					</AST:Signature>
+					<AST:Statement_list>
+						<AST:Method>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>46</integer></attr>
+							</attrs>
+							<AST:Signature>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>46</integer></attr>
+								</attrs>
+								<AST:Method_mod>
+									<attrs />
+									<bool><!-- is_public -->false</bool>
+									<bool><!-- is_protected -->false</bool>
+									<bool><!-- is_private -->false</bool>
+									<bool><!-- is_static -->false</bool>
+									<bool><!-- is_abstract -->false</bool>
+									<bool><!-- is_final -->false</bool>
+								</AST:Method_mod>
+								<bool><!-- is_ref -->false</bool>
+								<AST:METHOD_NAME>
+									<attrs />
+									<value>func4a</value>
+								</AST:METHOD_NAME>
+								<AST:Formal_parameter_list>
+								</AST:Formal_parameter_list>
+							</AST:Signature>
+							<AST:Statement_list>
+								<AST:Return>
+									<attrs>
+										<attr key="phc.comments"><string_list>
+										</string_list></attr>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>46</integer></attr>
+									</attrs>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>46</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>hello from func4a</string></attr>
+										</attrs>
+										<value>hello from func4a</value>
+									</AST:STRING>
+								</AST:Return>
+							</AST:Statement_list>
+						</AST:Method>
+					</AST:Statement_list>
+				</AST:Method>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>48</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>48</integer></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs />
+							<value>func4</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>49</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>49</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>49</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>result1</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Method_invocation>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>49</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:METHOD_NAME>
+								<attrs />
+								<value>func4a</value>
+							</AST:METHOD_NAME>
+							<AST:Actual_parameter_list>
+							</AST:Actual_parameter_list>
+						</AST:Method_invocation>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>50</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>50</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>50</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>50</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>50</integer></attr>
+										<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+										<attr key="phc.unparser.source_rep"><string encoding="base64">VGVzdCB0aGF0IGZ1bmN0aW9uIG1heSBiZSBjYWxsZWQgb3V0c2lkZSBzY29wZSB3aGVyZSBkZWZpbmVkLjxicj5cbg==</string></attr>
+									</attrs>
+									<value encoding="base64">VGVzdCB0aGF0IGZ1bmN0aW9uIG1heSBiZSBjYWxsZWQgb3V0c2lkZSBzY29wZSB3aGVyZSBkZWZpbmVkLjxicj4K</value>
+								</AST:STRING>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>51</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>51</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>51</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>51</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>51</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>51</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>51</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>result: </string></attr>
+											</attrs>
+											<value>result: </value>
+										</AST:STRING>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>51</integer></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:Conditional_expr>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>51</integer></attr>
+												<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:Bin_op>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>51</integer></attr>
+													<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+												</attrs>
+												<AST:Variable>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>51</integer></attr>
+													</attrs>
+													<AST:Target xsi:nil="true" />
+													<AST:VARIABLE_NAME>
+														<attrs />
+														<value>result1</value>
+													</AST:VARIABLE_NAME>
+													<AST:Expr_list>
+													</AST:Expr_list>
+												</AST:Variable>
+												<AST:OP>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>51</integer></attr>
+													</attrs>
+													<value>==</value>
+												</AST:OP>
+												<AST:STRING>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>51</integer></attr>
+														<attr key="phc.unparser.source_rep"><string>hello from func4a</string></attr>
+													</attrs>
+													<value>hello from func4a</value>
+												</AST:STRING>
+											</AST:Bin_op>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>51</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+												</attrs>
+												<value>pass</value>
+											</AST:STRING>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>51</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+												</attrs>
+												<value>fail</value>
+											</AST:STRING>
+										</AST:Conditional_expr>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>51</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>51</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPjxicj4KCg==</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+			</AST:Statement_list>
+		</AST:Method>
+		<AST:Method>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>54</integer></attr>
+			</attrs>
+			<AST:Signature>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>62</integer></attr>
+				</attrs>
+				<AST:Method_mod>
+					<attrs />
+					<bool><!-- is_public -->false</bool>
+					<bool><!-- is_protected -->false</bool>
+					<bool><!-- is_private -->false</bool>
+					<bool><!-- is_static -->false</bool>
+					<bool><!-- is_abstract -->false</bool>
+					<bool><!-- is_final -->false</bool>
+				</AST:Method_mod>
+				<bool><!-- is_ref -->false</bool>
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test5</value>
+				</AST:METHOD_NAME>
+				<AST:Formal_parameter_list>
+				</AST:Formal_parameter_list>
+			</AST:Signature>
+			<AST:Statement_list>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>55</integer></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>55</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>55</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>func5</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:STRING>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>55</integer></attr>
+								<attr key="phc.unparser.source_rep"><string>var func5</string></attr>
+							</attrs>
+							<value>var func5</value>
+						</AST:STRING>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Method>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>56</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Signature>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>58</integer></attr>
+						</attrs>
+						<AST:Method_mod>
+							<attrs />
+							<bool><!-- is_public -->false</bool>
+							<bool><!-- is_protected -->false</bool>
+							<bool><!-- is_private -->false</bool>
+							<bool><!-- is_static -->false</bool>
+							<bool><!-- is_abstract -->false</bool>
+							<bool><!-- is_final -->false</bool>
+						</AST:Method_mod>
+						<bool><!-- is_ref -->false</bool>
+						<AST:METHOD_NAME>
+							<attrs />
+							<value>func5</value>
+						</AST:METHOD_NAME>
+						<AST:Formal_parameter_list>
+						</AST:Formal_parameter_list>
+					</AST:Signature>
+					<AST:Statement_list>
+						<AST:Return>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>57</integer></attr>
+							</attrs>
+							<AST:STRING>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>57</integer></attr>
+									<attr key="phc.unparser.source_rep"><string>hello from func5</string></attr>
+								</attrs>
+								<value>hello from func5</value>
+							</AST:STRING>
+						</AST:Return>
+					</AST:Statement_list>
+				</AST:Method>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>59</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>59</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>59</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>result</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Method_invocation>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>59</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:METHOD_NAME>
+								<attrs />
+								<value>func5</value>
+							</AST:METHOD_NAME>
+							<AST:Actual_parameter_list>
+							</AST:Actual_parameter_list>
+						</AST:Method_invocation>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>60</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>60</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>60</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>60</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:STRING>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>60</integer></attr>
+										<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+										<attr key="phc.unparser.source_rep"><string encoding="base64">VGVzdCB0aGF0IGZ1bmN0aW9uIGFuZCB2YXJpYWJsZSBuYW1lcyBkbyBub3QgY29sbGlkZS48YnI+XG4=</string></attr>
+									</attrs>
+									<value encoding="base64">VGVzdCB0aGF0IGZ1bmN0aW9uIGFuZCB2YXJpYWJsZSBuYW1lcyBkbyBub3QgY29sbGlkZS48YnI+Cg==</value>
+								</AST:STRING>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>function.php</string></attr>
+						<attr key="phc.line_number"><integer>61</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>function.php</string></attr>
+							<attr key="phc.line_number"><integer>61</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>function.php</string></attr>
+								<attr key="phc.line_number"><integer>61</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>function.php</string></attr>
+									<attr key="phc.line_number"><integer>61</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>function.php</string></attr>
+										<attr key="phc.line_number"><integer>61</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>61</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>61</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>result: </string></attr>
+											</attrs>
+											<value>result: </value>
+										</AST:STRING>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>61</integer></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:Conditional_expr>
+											<attrs>
+												<attr key="phc.filename"><string>function.php</string></attr>
+												<attr key="phc.line_number"><integer>61</integer></attr>
+												<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:Bin_op>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>61</integer></attr>
+													<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+												</attrs>
+												<AST:Bin_op>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>61</integer></attr>
+														<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+													</attrs>
+													<AST:Variable>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>61</integer></attr>
+														</attrs>
+														<AST:Target xsi:nil="true" />
+														<AST:VARIABLE_NAME>
+															<attrs />
+															<value>result</value>
+														</AST:VARIABLE_NAME>
+														<AST:Expr_list>
+														</AST:Expr_list>
+													</AST:Variable>
+													<AST:OP>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>61</integer></attr>
+														</attrs>
+														<value>==</value>
+													</AST:OP>
+													<AST:STRING>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>61</integer></attr>
+															<attr key="phc.unparser.source_rep"><string>hello from func5</string></attr>
+														</attrs>
+														<value>hello from func5</value>
+													</AST:STRING>
+												</AST:Bin_op>
+												<AST:OP>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>61</integer></attr>
+													</attrs>
+													<value encoding="base64">JiY=</value>
+												</AST:OP>
+												<AST:Bin_op>
+													<attrs>
+														<attr key="phc.filename"><string>function.php</string></attr>
+														<attr key="phc.line_number"><integer>61</integer></attr>
+														<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+													</attrs>
+													<AST:Variable>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>61</integer></attr>
+														</attrs>
+														<AST:Target xsi:nil="true" />
+														<AST:VARIABLE_NAME>
+															<attrs />
+															<value>func5</value>
+														</AST:VARIABLE_NAME>
+														<AST:Expr_list>
+														</AST:Expr_list>
+													</AST:Variable>
+													<AST:OP>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>61</integer></attr>
+														</attrs>
+														<value>==</value>
+													</AST:OP>
+													<AST:STRING>
+														<attrs>
+															<attr key="phc.filename"><string>function.php</string></attr>
+															<attr key="phc.line_number"><integer>61</integer></attr>
+															<attr key="phc.unparser.source_rep"><string>var func5</string></attr>
+														</attrs>
+														<value>var func5</value>
+													</AST:STRING>
+												</AST:Bin_op>
+											</AST:Bin_op>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>61</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+												</attrs>
+												<value>pass</value>
+											</AST:STRING>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>function.php</string></attr>
+													<attr key="phc.line_number"><integer>61</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+												</attrs>
+												<value>fail</value>
+											</AST:STRING>
+										</AST:Conditional_expr>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>61</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>function.php</string></attr>
+											<attr key="phc.line_number"><integer>61</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPjxicj4KCg==</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+			</AST:Statement_list>
+		</AST:Method>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>65</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>65</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test1</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>66</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>66</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test2</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>67</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>67</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test3</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>68</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>68</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test4</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>69</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>function.php</string></attr>
+					<attr key="phc.line_number"><integer>69</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test5</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
+		<AST:Nop>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>function.php</string></attr>
+				<attr key="phc.line_number"><integer>71</integer></attr>
+			</attrs>
+		</AST:Nop>
+	</AST:Statement_list>
+</AST:PHP_script>

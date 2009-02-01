@@ -1,0 +1,51 @@
+Things in PHP that are difficult to implement in JS:
+
+ * references.  direct assignment, or pass-by.  In JS
+   everything is assign-by-value. (an object
+   variable's value is basically a pointer to the
+   object in memory).
+ 
+ * foreach() on mixed associative arrays.
+   Order of values is not guaranteed to be the same
+   order in which items were added.
+   ( works in firefox, but not everywhere, eg rhino)
+   
+ * public/private/protected.  These do not exist in
+   javascript.  However, they are not necessary,
+   as the code is generated, and not intended to be
+   extended directly.
+   
+ * constants.  define() in php.  implemented via php.js
+ 
+ * interfaces.  I think it should be ok to simply omit
+ the definition of the interface, and the reference to it.
+ After all, interfaces are just a compile-time restraint
+ on the programmer.
+ 
+ * superglobals.  _GET, _COOKIE, _REQUEST, $GLOBALS could be emulated.
+ harder or impossible: _POST, _SESSION, _SERVER, _FILES, _ENV
+ 
+ * Magic methods.  __sleep(), __wakeup(), __toString(), __set_state(), __clone().
+ clone is already magical via our JS clone implementation.
+ sleep and wakeup could be made magical by our JS implementation of serialize()
+ and unserialize().  __toString() would be trickier to support.  __set_state() is
+ only used by var_export() -- low priority.
+ 
+ * method calls embedded in string.  eg: "result is {$var->getResult()}".  phc
+ can't parse this at present.
+ 
+ * backtick operators and exec() family of functions. For obvious reasons.
+ Likely can support these for standalone JS engines, but not browser.  low priority.
+ 
+ * Incrementing strings.  eg:  $foo = 'd';  $foo ++;  <-- $foo == 'e' in PHP.  NaN in JS.
+   See http://us3.php.net/manual/en/language.operators.increment.php
+   
+ * xor logical operator.  doesn't exist in JS.
+    Described at: http://us3.php.net/manual/en/language.operators.logical.php
+    Here are some ways to emulate in JS: http://www.howtocreate.co.uk/xor.html
+    
+ * array1 + array2.  In PHP, this behaves like array_union().  In JS, it behaves like
+   (string)array1 + (string)array2.  In general need to decide how to handle array
+   operators, as documented at: http://us3.php.net/manual/en/language.operators.array.php
+ 
+ 
