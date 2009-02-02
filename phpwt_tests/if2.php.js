@@ -1,45 +1,154 @@
 
 
-function ___array() {
-  var arr = [];
-  for (var i = 0; i < ___array.arguments.length; ++i) {
-    var item = ___array.arguments[i];
-    if(item instanceof Array) {
-        arr[item[0]] = item[1];
-    }
-    else {
-        arr.push( item );
+
+function ___getall(QueryString) {
+
+	var QS, AllElements, CurElement, CurName, CurVal
+
+	QS = new Object();
+
+		// Determine the string to use
+	if ( !QueryString && typeof location != 'undefined') {
+		QueryString = location.search;
+	};
+        if( !QueryString ) {
+            return QS;
+        }
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the elements
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+			// Call the get method to obtain the value
+		if ( CurName.length > 0 ) {
+			QS[CurName] = getparam(CurName);
+		};
+	};
+
+		// Return the object
+	return QS;
+};
+_GET = ___getall();
+
+function ___load_cookies() {
+  var cr = {};
+  if( typeof document == 'undefined' ) {
+    return cr;
+  }
+  if (document.cookie != '') {
+  var ck = document.cookie.split('; ');
+  
+    for (var i=ck.length - 1; i>= 0; i--) {
+      var cv = ck[i].split('=');
+      cr[cv[0]]=cv[1];
     }
   }
-  return arr;
+  return cr;
 }
+_COOKIE = ___load_cookies();
+
+function Exception(msg, code) {
+    this.message = msg && msg.length ? msg : 'Unknown exception';
+    this.code = code;
+    this.file = null;
+    this.line = 0;
+    
+    this.getMessage = function() {
+        return this.message;
+    }
+    this.getCode = function() {
+        return this.code;
+    }
+    this.getFile = function() {
+        return this.file;
+    }
+    this.getLine = function() {
+        return this.line;
+    }
+    this.getTrace = function() {
+        return [];
+    }
+    this.getTraceAsString = function() {
+        return '';
+    }
+    this.__toString = function() {
+        return 'Exception: ' + this.message;
+    }
+}
+
         
-function get_magic_num() { return 5; }
+;
+
+Function.prototype.inheritsFrom = function(parentClassOrObject) {
+    p = this.prototype;
+    if (parentClassOrObject.constructor == Function)
+    {
+        this.prototype = new parentClassOrObject;
+        this.prototype.constructor = this;
+        this.prototype.__parent = parentClassOrObject.prototype;
+    }
+    else
+    {
+        this.prototype = parentClassOrObject;
+        this.prototype.constructor = this;
+        this.prototype.__parent = parentClassOrObject;
+    }
+    return this;
+}
+
+___echo = function(v) {
+    if (typeof document == 'undefined') print(v);
+    else document.write(v);
+}
+
+
+if (typeof(window) == 'undefined') {
+    window = this;
+}
+
+
+
+
+get_magic_num = function() {
+return 5;
+}
 
 var i = 5;
-document.write( "Test || and order of operations with parens.<br>\n");
-if( (i < 10 && i > 6) || i == 5 ) { document.write( "pass"); } else { document.write( "fail"); }
-document.write( "<br><br>\n\n");
-
-document.write( "Test method call inside if gets evaluated correctly<br>\n");
-if( (i < 10 && i > 6) || i == get_magic_num() ) { document.write( "pass"); } else { document.write( "fail"); }
-document.write( "<br><br>\n\n");
-
-var success = false;
-if(false){
-}
-else{
-        if(true) {
-                var success = true;
-        }
-}
-document.write( "Test 'if() {} else{ if() {} }' works correctly.<br>\n");
-if( success ) {
-    document.write( "pass");
+___echo("Test || and order of operations with parens.<br>\n");
+if((i<10&&i>6)||i==5) {
+___echo("pass");
 }
 else {
-    document.write( "fail");
+___echo("fail");
 }
-document.write( "<br><br>\n\n");
+___echo("<br><br>\n\n");
+___echo("Test method call inside if gets evaluated correctly<br>\n");
+if((i<10&&i>6)||i==get_magic_num()) {
+___echo("pass");
+}
+else {
+___echo("fail");
+}
+___echo("<br><br>\n\n");
+var success = false;
+if(false) {
+}
+else {
+if(true) {
+success = true;
+}
+
+}
+___echo("Test 'if() {} else{ if() {} }' works correctly.<br>\n");
+if(success) {
+___echo("pass");
+}
+else {
+___echo("fail");
+}
+___echo("<br><br>\n\n");
 
 

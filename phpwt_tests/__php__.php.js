@@ -80,21 +80,6 @@ function Exception(msg, code) {
 }
 
         
-___array = function() {
-    var arr = [];
-    for (var i = 0; i < ___array.arguments.length; ++i) {
-        var item = ___array.arguments[i];
-        if (item instanceof Array && item.length == 3 && item[0] == '__kv') {
-            arr[item[1]] = item[2];
-        }
-        else {
-            arr.push(item);
-        }
-    }
-    return arr;
-
-}
-
 ;
 
 Function.prototype.inheritsFrom = function(parentClassOrObject) {
@@ -128,56 +113,14 @@ if (typeof(window) == 'undefined') {
 
 
 test1 = function() {
-var data = "\"";
-___echo("Test Double quotes embedded in a single-quote string.<br>\n");
-___echo("result: "+(data==="\""?"pass":"fail")+"<br><br>\n\n");
+say_hi = function(name) {
+return "hi "+name;
 }
 
-test2 = function() {
-var data = "'";
-___echo("Test single quotes embedded in a double-quote string.<br>\n");
-___echo("result: "+(data==="'"?"pass":"fail")+"<br><br>\n\n");
-}
-
-test3 = function() {
-var data = "\n";
-___echo("Test escaped newline embedded in a double-quote string.<br>\n");
-___echo("result: "+(data==="\n"?"pass":"fail")+"<br><br>\n\n");
-}
-
-test4 = function() {
-var data = "\\n";
-___echo("Test escaped newline embedded in a single-quote string.<br>\n");
-___echo("result: "+(data==="\\n"?"pass":"fail")+"<br><br>\n\n");
-}
-
-test5 = function() {
-var data = "1\n2";
-___echo("Test real newline in a string. (multi-line string)<br>\n");
-___echo("result: "+(data==="1\n2"?"pass":"fail")+"<br><br>\n\n");
-}
-
-test6 = function() {
-var data = "\"";
-___echo("Test escaped quote in a string. <br>\n");
-___echo("result: "+(data==="\""?"pass":"fail")+"<br><br>\n\n");
-}
-
-test7 = function() {
-var days = ___array("monday","tuesday");
-var day_idx = 1;
-var animal = "cat";
-var data = "line1 "+days[day_idx]+"\nline2 kitty_"+animal+"\nline3";
-___echo("Test heredoc multiline string with embedded variables. <br>\n");
-___echo("result: "+(data==="line1 tuesday\nline2 kitty_cat\nline3"?"pass":"fail")+"<br><br>\n\n");
+___echo("Test that function named __php__funcname is callable as funcname()<br>\n");
+___echo("result: "+(say_hi("Dave")==="hi Dave"?"pass":"fail")+"<br><br>\n\n");
 }
 
 test1();
-test2();
-test3();
-test4();
-test5();
-test6();
-test7();
 
 

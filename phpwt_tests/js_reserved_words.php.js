@@ -1,98 +1,189 @@
 
 
-function ___array() {
-  var arr = [];
-  for (var i = 0; i < ___array.arguments.length; ++i) {
-    var item = ___array.arguments[i];
-    if(item instanceof Array) {
-        arr[item[0]] = item[1];
-    }
-    else {
-        arr.push( item );
+
+function ___getall(QueryString) {
+
+	var QS, AllElements, CurElement, CurName, CurVal
+
+	QS = new Object();
+
+		// Determine the string to use
+	if ( !QueryString && typeof location != 'undefined') {
+		QueryString = location.search;
+	};
+        if( !QueryString ) {
+            return QS;
+        }
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the elements
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+			// Call the get method to obtain the value
+		if ( CurName.length > 0 ) {
+			QS[CurName] = getparam(CurName);
+		};
+	};
+
+		// Return the object
+	return QS;
+};
+_GET = ___getall();
+
+function ___load_cookies() {
+  var cr = {};
+  if( typeof document == 'undefined' ) {
+    return cr;
+  }
+  if (document.cookie != '') {
+  var ck = document.cookie.split('; ');
+  
+    for (var i=ck.length - 1; i>= 0; i--) {
+      var cv = ck[i].split('=');
+      cr[cv[0]]=cv[1];
     }
   }
-  return arr;
+  return cr;
 }
-        
-function test1() {
-    var do = 'yes';
-    var interface = 5;
-    var null = null;
-    var throw = 'ball';
-    var if = 'bool';
-    var false = false;
+_COOKIE = ___load_cookies();
+
+function Exception(msg, code) {
+    this.message = msg && msg.length ? msg : 'Unknown exception';
+    this.code = code;
+    this.file = null;
+    this.line = 0;
     
-    document.write( "spot check that some JS reserved words can be used.<br>\n");
-    document.write( 'result: ' + (do == 'yes' && interface == 5 && null === null && throw == 'ball' && if == 'bool' && false === false ? 'pass' : 'fail') + "<br><br>\n\n");
+    this.getMessage = function() {
+        return this.message;
+    }
+    this.getCode = function() {
+        return this.code;
+    }
+    this.getFile = function() {
+        return this.file;
+    }
+    this.getLine = function() {
+        return this.line;
+    }
+    this.getTrace = function() {
+        return [];
+    }
+    this.getTraceAsString = function() {
+        return '';
+    }
+    this.__toString = function() {
+        return 'Exception: ' + this.message;
+    }
+}
+
+        
+;
+
+Function.prototype.inheritsFrom = function(parentClassOrObject) {
+    p = this.prototype;
+    if (parentClassOrObject.constructor == Function)
+    {
+        this.prototype = new parentClassOrObject;
+        this.prototype.constructor = this;
+        this.prototype.__parent = parentClassOrObject.prototype;
+    }
+    else
+    {
+        this.prototype = parentClassOrObject;
+        this.prototype.constructor = this;
+        this.prototype.__parent = parentClassOrObject;
+    }
+    return this;
+}
+
+___echo = function(v) {
+    if (typeof document == 'undefined') print(v);
+    else document.write(v);
 }
 
 
-function test2() {
+if (typeof(window) == 'undefined') {
+    window = this;
+}
 
-    var break = 1;
-    var case = 1;
-    var catch = 1;
-    var continue = 1;
-    var default = 1;
-    var delete = 1;
-    var do = 1;
-    var else = 1;
-    var false = 1;
-    var finally = 1;
-    var for = 1;
-    var function = 1;
-    var if = 1;
-    var in = 1;
-    var instanceof = 1;
-    var new = 1;
-    var null = 1;
-    var return = 1;
-    var switch = 1;
-//    $this = 1;  // illegal.  $this is a PHP reserved variable name.
-    throw = 1;
-    var true = 1;
-    var try = 1;
-    var typeof = 1;
-    var var = 1;
-    var void = 1;
-    var while = 1;
-    var with = 1;
-        
-    // JS 3 reserved words
-    abstract = 1;
-    var boolean = 1;
-    var byte = 1;
-    var char = 1;
-    var class = 1;
-    var const = 1;
-    var debugger = 1;
-    var double = 1;
-    var enum = 1;
-    var export = 1;
-    var extends = 1;
-    var final = 1;
-    var float = 1;
-    var goto = 1;
-    var implements = 1;
-    var import = 1;
-    var int = 1;
-    var interface = 1;
-    var long = 1;
-    var native = 1;
-    var package = 1;
-    var private = 1;
-    var protected = 1;
-    var public = 1;
-    var short = 1;
-    var static = 1;
-    var super = 1;
-    var synchronized = 1;
-    var throws = 1;
-    var transient = 1;
-    var volatile = 1;
 
-    document.write( "Test that all JS reserved words can be used.<br>\n");
-    document.write( 'result: ' + ('pass') + "<br><br>\n\n");  // If we didn't get a compilation error, then it passes.  :-)
+
+
+test1 = function() {
+var _do = "yes";
+var _interface = 5;
+var _null = null;
+var _throw = "ball";
+var _if = "bool";
+var _false = false;
+___echo("spot check that some JS reserved words can be used.<br>\n");
+___echo("result: "+(_do=="yes"&&_interface==5&&_null===null&&_throw=="ball"&&_if=="bool"&&_false===false?"pass":"fail")+"<br><br>\n\n");
+}
+
+test2 = function() {
+var _break = 1;
+var _case = 1;
+var _catch = 1;
+var _continue = 1;
+var _default = 1;
+var _delete = 1;
+var _do = 1;
+var _else = 1;
+var _false = 1;
+var _finally = 1;
+var _for = 1;
+var _function = 1;
+var _if = 1;
+var _in = 1;
+var _instanceof = 1;
+var _new = 1;
+var _null = 1;
+var _return = 1;
+var _switch = 1;
+var _throw = 1;
+var _true = 1;
+var _try = 1;
+var _typeof = 1;
+var _var = 1;
+var _void = 1;
+var _while = 1;
+var _with = 1;
+var _abstract = 1;
+var _boolean = 1;
+var _byte = 1;
+var _char = 1;
+var _class = 1;
+var _const = 1;
+var _debugger = 1;
+var _double = 1;
+var _enum = 1;
+var _export = 1;
+var _extends = 1;
+var _final = 1;
+var _float = 1;
+var _goto = 1;
+var _implements = 1;
+var _import = 1;
+var _int = 1;
+var _interface = 1;
+var _long = 1;
+var _native = 1;
+var _package = 1;
+var _private = 1;
+var _protected = 1;
+var _public = 1;
+var _short = 1;
+var _static = 1;
+var _super = 1;
+var _synchronized = 1;
+var _throws = 1;
+var _transient = 1;
+var _volatile = 1;
+___echo("Test that all JS reserved words can be used.<br>\n");
+___echo("result: "+"pass"+"<br><br>\n\n");
 }
 
 test1();

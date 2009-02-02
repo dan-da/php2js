@@ -1,1 +1,1 @@
-../../../builder/boilerplate/php.js
+../../../lib/_autotranslated/php.js

@@ -16,13 +16,13 @@ function main($argv) {
     ini_set( 'memory_limit', '-1');
     assert_options( ASSERT_CALLBACK, 'assert_cb');
     
-    $include_path = isset( $argv[2] ) ? $argv[2] : '.';
+    $include_path = isset( $argv[2] ) ? $argv[2] : '.:' . dirname(__FILE__) . '/../../lib';
     
     $stripper = new stripnamespaces();
     $dom_no_ns = $stripper->stripnamespace_from_xml_file($argv[1]);
     $proc = new Translator( $include_path );
 //echo date('c') . "starting translation to JS\n";
-    $js_code = $proc->translate_dom( $dom_no_ns );
+    $js_code = $proc->translate_dom( $dom_no_ns, true );
     
     echo "\n" . $js_code . "\n";
 }
@@ -85,6 +85,23 @@ class func_info {
     }
 }
 
+class top_level_func_info {
+    var $func_name;
+    var $buf_start_token;
+    var $buf_len;
+    var $call_count = 0;
+    
+    function __construct( $func_name, $buf_len ) {
+        $this->func_name = $func_name;
+        $this->buf_start_token = self::gen_start_token( $func_name );
+        $this->buf_len = $buf_len;
+    }
+    
+    static function gen_start_token($func_name) {
+	return '!#######-########'.$func_name.'#########-######!';
+    }
+}
+
 class Translator {
 
     var $xpath;
@@ -95,6 +112,7 @@ class Translator {
     var $class_inheritance = array();
     
     static $included_files = array();
+    static $defined_top_level_funcs = array();
     
     function __construct( $include_path=null ) {
         // add the global scope to kick things off.
@@ -107,19 +125,35 @@ class Translator {
         $this->include_path = $include_path;
     }
 
-    function translate_xml_file($filename) {
+    function translate_xml_file($filename, $optimize = true) {
         $xml = new DomDocument();
         $xml->load($filename);
-        return $this->translate_dom( $xml );
+        return $this->translate_dom( $xml, $optimize );
     }
     
-    function translate_dom( SimpleXMLElement $dom ) {
+    function translate_dom( SimpleXMLElement $dom, $optimize = true ) {
         
         $this->boilerplate();
         
         $this->walk_dom( $dom );
+	
+	if( $optimize ) {
+	    $this->_optimize();
+	}
         
         return $this->jsbuf;
+    }
+    
+    function _optimize() {
+	foreach( self::$defined_top_level_funcs as &$func ) {
+//	    print_r( $func ); exit;
+	    
+	    $pos = strpos( $this->jsbuf, $func->buf_start_token );
+    	    if( $pos !== null ) {
+		$len = $func->call_count === 0 ? $func->buf_len + ($this->pretty ? 1 : 0) : strlen( $func->buf_start_token );
+		$this->jsbuf = substr_replace( $this->jsbuf, '', $pos, $len );
+	    }
+	}
     }
     
     function boilerplate() {
@@ -129,99 +163,14 @@ class Translator {
             return;
         }
         $first_time = false;
-        
+
+	// Most Boilerplate code has been moved into core_helpers.js
+	// so that it can be optimized away if unused.
         $js_code = "
-function ___require(filename) {        
-if( typeof document != 'undefined' ) {
-    var js = document.createElement('script');
-    js.setAttribute('type', 'text/javascript');
-    js.setAttribute('src', filename);
-    js.setAttribute('defer', 'defer');
-    document.getElementsByTagName('HEAD')[0].appendChild(js);
-}
-else {
-load(filename);
-}
-}
-___require('php.js');
-
-function ___array() {
-  var arr = [];
-  for (var i = 0; i < ___array.arguments.length; ++i) {
-    var item = ___array.arguments[i];
-    if(item instanceof Array && item.length == 3 && item[0] == '__kv') {
-        arr[item[1]] = item[2];
-    }
-    else {
-        arr.push( item );
-    }
-  }
-  return arr;
-}
-
-function method_exists( classref, methodname ) {
-    return is_object(classref) && typeof classref[methodname] == 'function';
-}
-
-function get_class_methods( classref ) {
-    if( typeof classref == 'String' ) {
-        classref = eval(classref);
-    }
-    methods = [];
-    for( var x in classref ) {
-        if( method_exists( classref, x ) ) {
-            methods[methods.length] = x;
-        }
-    }
-    return methods;
-}
-
-
-function getparam(Name, ReturnStyle, QueryString) {
-
-	var AllElements, CurElement, CurName, CurVal, ReturnVal
-
-		// Set the Name
-	Name = Name.replace(/^\s*|\s*$/g,'');
-		// Init the return
-	ReturnVal = null;
-
-		// Determine the string to use
-	if ( !QueryString ) {
-		QueryString = location.search;
-	};
-		// Split the query string on the ampersand (the substring removes the question mark)
-	AllElements = QueryString.substring(1).split('&');
-
-		// Loop over the string
-	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
-			// Split the current element on the equals sign
-		CurElement = AllElements[Cnt].split('=');
-			// Unescape and Trim the returned name
-		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
-		if ( Name == CurName ) {
-				// Generate the array if needed
-			if ( !ReturnVal ) { ReturnVal = new Array };
-				// Get the Value
-			CurVal = CurElement[1];
-				// Determine how the value should be represented
-			if ( CurVal ) {
-				CurVal = unescape(CurVal);
-			} else {
-				CurVal = '';
-			};
-			ReturnVal[ReturnVal.length] = CurVal;
-		};
-	};
-
-        return ReturnVal;
-
-};
-
 
 function ___getall(QueryString) {
 
-	var QS, AllElements, CurElement, CurName, CurVal
+	var QS, AllElements, CurElement, CurName, CurVal;
 
 	QS = new Object();
 
@@ -268,31 +217,6 @@ function ___load_cookies() {
 }
 _COOKIE = ___load_cookies();
 
-function JS(code) {
-    eval( code );
-}
-
-Function.prototype.inheritsFrom = function( parentClassOrObject ){
-        p = this.prototype;
-	if ( parentClassOrObject.constructor == Function ) 
-	{ 
-            /* Normal Inheritance */
-            this.prototype = new parentClassOrObject;
-            this.prototype.constructor = this;
-            this.prototype.__parent = parentClassOrObject.prototype;
-	} 
-	else 
-	{ 
-            /* Pure Virtual Inheritance */
-            this.prototype = parentClassOrObject;
-            this.prototype.constructor = this;
-            this.prototype.__parent = parentClassOrObject;
-	} 
-	return this;
-}
-function prepare_str_concat(v) {if(v==undefined) v='';return v;}
-function ___echo(v) {if(typeof document=='undefined') print(v); else document.write(v);}
-
 function Exception(msg, code) {
     this.message = msg && msg.length ? msg : 'Unknown exception';
     this.code = code;
@@ -322,23 +246,13 @@ function Exception(msg, code) {
     }
 }
 
-function ___clone (o) {
-    function c(o) {
-        for (var i in o) {
-            this[i] = o[i];
-        }
-    }
-    var d = new c(o);
-    if( d.__clone ) {
-        d.__clone();
-    }
-    return d;
-}
         ";
         $this->jsbuf .= $js_code; //str_replace( "\n", ' ', $js_code);
         if( $this->pretty ) {
             $this->jsbuf .= "\n";
         }
+	
+	$this->_include_file_worker( 'require_once', 'phpjs.php' );
     }
 
     function walk_dom(SimpleXMLElement $dom_node, $depth = 0) {
@@ -920,6 +834,7 @@ function ___clone (o) {
         $parent_node = $this->_xpath_one($node, 'parent::node()');
         $is_class_method = $parent_node->getName() == 'Member_list';
         $modifiers = $this->_get_method_mod( $this->_xpath_one($node, 'Signature/Method_mod') );
+	$is_top_level_func = false;
         
         if( $is_class_method ) {
             $class_name = (string)$this->_get_value( $this->_xpath_one($node, '../../child::CLASS_NAME[1]/value') );
@@ -969,6 +884,17 @@ function ___clone (o) {
             }
         }
         else {
+	    $magic_tok = '__php__';
+	    if( substr($function_name, 0, strlen($magic_tok) ) == $magic_tok ) {
+		// Found the token.  Now we remove it.
+		$function_name = substr($function_name, strlen($magic_tok));
+	    }
+	    
+	    if( count($this->function_scope) == 2 ) {
+		$is_top_level_func = true;
+		$this->jsbuf .= top_level_func_info::gen_start_token( $function_name );
+	    }
+	    
             $this->jsbuf .= sprintf("%s = function(", $function_name);
             $this->_func_args( $name_with_default );
             $this->jsbuf .= ') {';
@@ -993,6 +919,11 @@ function ___clone (o) {
         array_pop( $this->function_scope );
         
         $this->jsbuf .= "}\n";
+	
+	if( $is_top_level_func ) {
+	    // this is a top level function
+	    self::$defined_top_level_funcs[$function_name] = new top_level_func_info($function_name, strlen( $this->jsbuf ) );
+	}
     }
     
     function _func_args( $name_with_default ) {
@@ -1198,6 +1129,7 @@ function ___clone (o) {
         if( $is_declaration ) {
             if( $op_str == '.') {
                 $this->jsbuf .= sprintf('=prepare_str_concat(%s);%s', $var_name, $var_name );
+		$this->_addcallref( 'prepare_str_concat' );
             }
         }
         
@@ -1323,9 +1255,12 @@ function ___clone (o) {
                     if( $param->getName() != 'STRING') {
                         throw new Exception( sprintf( "native javascript function %s must have constant arg.  in scope %s", $method_name, $this->function_scope[count($this->function_scope)-1]->func_name ) );
                     }
-                    $this->jsbuf .= $this->_stringval( $param );
+		    $buf = $this->_stringval( $param );
+                    $this->jsbuf .= str_replace( '\$', '$', $buf );
                     return false;
                 }
+
+		$this->_addcallref( (string)$method_name );
             }
 
             
@@ -1377,6 +1312,13 @@ function ___clone (o) {
         return true;
     }
     
+    function _addcallref( $function_name ) {
+	$function_name = (string)$function_name;
+	if( isset( self::$defined_top_level_funcs[$function_name] ) ) {
+	    self::$defined_top_level_funcs[$function_name]->call_count ++;
+	}
+    }
+    
     function _callfuncparam($node) {
         
         assert( 'is_object($node) && $node->getName() == "Actual_parameter"' );
@@ -1417,7 +1359,12 @@ function ___clone (o) {
         if( $parent_node->getName() == 'Assignment' ) {
             throw new Exception( sprintf( "Return values from included files are not supported at this time. When including '%s'", $filename ) );
         }
+	
+	$this->_include_file_worker( $method_name, $filename );
         
+    }
+    
+    function _include_file_worker( $method_name, $filename ) {
         $include_paths = explode( ':', $this->include_path );
 
         foreach( $include_paths as $include_path ) {
@@ -1433,11 +1380,11 @@ function ___clone (o) {
             return;
         }
         self::$included_files[$filename] = true;
-        
+	
         $parser = new PlatformParser('.', $this->include_path);
-        $this->jsbuf .= $parser->compile( $filename );
+        $this->jsbuf .= $parser->compile( $filename, false );
+	
     }
-
     
     function _string( $node, $silent = false ) {
         assert( 'is_object($node) && $node->getName() == "STRING"' );
@@ -1508,6 +1455,9 @@ function ___clone (o) {
             $this->jsbuf .= $class_name . '.';
         }
         $constant_name = $this->_get_value( $this->_xpath_one($node, 'CONSTANT_NAME/value') );
+	
+	// In case this constant identifies a function.
+	$this->_addcallref( (string)$constant_name );
     
         $this->jsbuf .= $constant_name;
     }
@@ -1517,6 +1467,7 @@ function ___clone (o) {
         assert( 'is_object($node) && $node->getName() == "Array"' );
         
         $this->jsbuf .= '___array(';
+	$this->_addcallref( '___array' );
     
         $array_elems = $node->xpath( "Array_elem_list/Array_elem");
         
@@ -1922,7 +1873,7 @@ class PlatformParser {
         $this->platform = platform;
     }
     
-    function compile( $filename ) {
+    function compile( $filename, $optimize = true ) {
         
             $xml_file = $filename . '.xml';
             $cmd = sprintf( 'phc --dump-xml=ast %s >  %s', escapeshellarg( $filename ), escapeshellarg($xml_file) );
@@ -1936,7 +1887,7 @@ class PlatformParser {
             $dom_no_ns = $stripper->stripnamespace_from_xml_file($xml_file);
             unlink( $xml_file );
             $proc = new Translator( $this->include_path );
-            return $proc->translate_dom( $dom_no_ns );
+            return $proc->translate_dom( $dom_no_ns, $optimize );
     }
     
     function parseModule($module_name, $file_name) {

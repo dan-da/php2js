@@ -1,71 +1,151 @@
 
 
-function ___array() {
-  var arr = [];
-  for (var i = 0; i < ___array.arguments.length; ++i) {
-    var item = ___array.arguments[i];
-    if(item instanceof Array) {
-        arr[item[0]] = item[1];
-    }
-    else {
-        arr.push( item );
+
+function ___getall(QueryString) {
+
+	var QS, AllElements, CurElement, CurName, CurVal
+
+	QS = new Object();
+
+		// Determine the string to use
+	if ( !QueryString && typeof location != 'undefined') {
+		QueryString = location.search;
+	};
+        if( !QueryString ) {
+            return QS;
+        }
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the elements
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+			// Call the get method to obtain the value
+		if ( CurName.length > 0 ) {
+			QS[CurName] = getparam(CurName);
+		};
+	};
+
+		// Return the object
+	return QS;
+};
+_GET = ___getall();
+
+function ___load_cookies() {
+  var cr = {};
+  if( typeof document == 'undefined' ) {
+    return cr;
+  }
+  if (document.cookie != '') {
+  var ck = document.cookie.split('; ');
+  
+    for (var i=ck.length - 1; i>= 0; i--) {
+      var cv = ck[i].split('=');
+      cr[cv[0]]=cv[1];
     }
   }
-  return arr;
+  return cr;
 }
+_COOKIE = ___load_cookies();
+
+function Exception(msg, code) {
+    this.message = msg && msg.length ? msg : 'Unknown exception';
+    this.code = code;
+    this.file = null;
+    this.line = 0;
+    
+    this.getMessage = function() {
+        return this.message;
+    }
+    this.getCode = function() {
+        return this.code;
+    }
+    this.getFile = function() {
+        return this.file;
+    }
+    this.getLine = function() {
+        return this.line;
+    }
+    this.getTrace = function() {
+        return [];
+    }
+    this.getTraceAsString = function() {
+        return '';
+    }
+    this.__toString = function() {
+        return 'Exception: ' + this.message;
+    }
+}
+
         
-function test1() {
-	var buf = null;
-	
-	try {
-		throw new Exception();
-	}
-	catch( Exception e ) {
-		buf = 'The sky is falling.';
-	}
-	document.write( "Test try and catch.<br>\n");
-	document.write( 'result: ' + (buf == 'The sky is falling.' ? 'pass' : 'fail') + "<br><br>\n\n");
+;
+
+Function.prototype.inheritsFrom = function(parentClassOrObject) {
+    p = this.prototype;
+    if (parentClassOrObject.constructor == Function)
+    {
+        this.prototype = new parentClassOrObject;
+        this.prototype.constructor = this;
+        this.prototype.__parent = parentClassOrObject.prototype;
+    }
+    else
+    {
+        this.prototype = parentClassOrObject;
+        this.prototype.constructor = this;
+        this.prototype.__parent = parentClassOrObject;
+    }
+    return this;
+}
+
+___echo = function(v) {
+    if (typeof document == 'undefined') print(v);
+    else document.write(v);
 }
 
 
-function test2() {
-	var buf = null;
-	
-	try {
-		throw new Exception("The sky is falling.");
-	}
-	catch( Exception e ) {
-		buf = e->getMessage();
-	}
-	document.write( "Test try, catch and exception with message.<br>\n");
-	document.write( 'result: ' + (buf == 'The sky is falling.' ? 'pass' : 'fail') + "<br><br>\n\n");
+if (typeof(window) == 'undefined') {
+    window = this;
 }
 
 
-function test3() {
-	var buf = null;
-	
-	class CustomException extends Exception {
-		function getBlurb() { return "The sky is blue."; }
-	}
-	
-	try {
-		throw new CustomException("The sky is falling.");
-	}
-	catch( CustomException e ) {
-		buf = e->getBlurb();
-	}
-	catch( Exception e ) {
-		buf = e->getMessage();
-	}
-	document.write( "Test custom exception subclass and multiple catch blocks.<br>\n");
-	document.write( 'result: ' + (buf == 'The sky is blue.' ? 'pass' : 'fail') + "<br><br>\n\n");
+
+
+test1 = function() {
+var buf = null;
+try{throw new Exception;
+}catch(e if e instanceof Exception) {buf = "The sky is falling.";
+}
+___echo("Test try and catch.<br>\n");
+___echo("result: "+(buf=="The sky is falling."?"pass":"fail")+"<br><br>\n\n");
 }
 
+test2 = function() {
+var buf = null;
+try{throw new Exception("The sky is falling.");
+}catch(e if e instanceof Exception) {buf = e.getMessage();
+}
+___echo("Test try, catch and exception with message.<br>\n");
+___echo("result: "+(buf=="The sky is falling."?"pass":"fail")+"<br><br>\n\n");
+}
+
+test3 = function() {
+var buf = null;
+function CustomException() {CustomException.prototype.getBlurb = function() {
+return "The sky is blue.";
+}
+} {CustomException.inheritsFrom( Exception );} /* end class CustomException */
+try{throw new CustomException("The sky is falling.");
+}catch(e if e instanceof CustomException) {var buf = e.getBlurb();
+}catch(e if e instanceof Exception) {buf = e.getMessage();
+}
+___echo("Test custom exception subclass and multiple catch blocks.<br>\n");
+___echo("result: "+(buf=="The sky is blue."?"pass":"fail")+"<br><br>\n\n");
+}
 
 test1();
 test2();
 test3();
-
 
 
