@@ -3,7 +3,7 @@
 
 function ___getall(QueryString) {
 
-	var QS, AllElements, CurElement, CurName, CurVal
+	var QS, AllElements, CurElement, CurName, CurVal;
 
 	QS = new Object();
 
@@ -148,7 +148,18 @@ ___echo("Test foreach($arr as $key => $val)"+"<br>\n");
 ___echo("result: "+(buf==="favcolor: red,favmovie: shawshank,favsong: Yellow submarine,"?"pass":"fail")+"<br><br>\n\n");
 }
 
+test3 = function() {
+var arr = ___array(1,2,3);
+for(var ____idx in arr) {
+var i=arr[____idx];
+i+=1;
+}
+___echo("Test foreach($arr as $val) { $val += 1 }"+"<br>\n");
+___echo("result: "+(i==4?"pass":"fail")+"<br><br>\n\n");
+}
+
 test1(favorites);
 test2(favorites);
+test3();
 
 

@@ -150,7 +150,7 @@ class Translator {
 	    
 	    $pos = strpos( $this->jsbuf, $func->buf_start_token );
     	    if( $pos !== null ) {
-		$len = $func->call_count === 0 ? $func->buf_len + ($this->pretty ? 1 : 0) : strlen( $func->buf_start_token );
+		$len = false && $func->call_count === 0 ? $func->buf_len + ($this->pretty ? 1 : 0) : strlen( $func->buf_start_token );
 		$this->jsbuf = substr_replace( $this->jsbuf, '', $pos, $len );
 	    }
 	}
@@ -364,7 +364,7 @@ function Exception(msg, code) {
             $newly_defined_vars = array_diff( $vars_defined_in_scope_after_statement, $vars_defined_in_scope_before_statement );
             foreach( $newly_defined_vars as $k => $v ) {
                 if( $v === true ) {
-                    $tmp_buf .= sprintf( 'var %s; ', $k);
+                    $tmp_buf .= sprintf( "var %s;\n", $k);
                     // d = already declared.
                     $this->current_scope()->scope_vars[$k] = 'd';
                 }
@@ -757,8 +757,8 @@ function Exception(msg, code) {
             $this->jsbuf .= "\n";
         }
         
-        $this->jsbuf .= "var ";
-        $this->_any_expr( $expr3 );
+        // $this->jsbuf .= "var ";
+        $this->_variable( $expr3, false, false, true );
         $this->jsbuf .= '=';
         $this->_any_expr( $expr1 );
         $this->jsbuf .= '[';
@@ -1572,7 +1572,7 @@ function Exception(msg, code) {
         return $this->js_reserved_word( $word ) && !in_array( $word, $exceptions ) ? ('_' . $word) : $word;
     }
   
-    function _variable( $node, $is_declaration = false, $is_assignment = false ) {
+    function _variable( $node, $is_declaration = false, $is_assignment = false, $is_foreach = false ) {
         assert( 'is_object($node) && $node->getName() == "Variable"' );
 
         $expr_list = $this->_xpath_one_or_none( $node, 'Expr_list');
@@ -1623,14 +1623,13 @@ function Exception(msg, code) {
             
             $var_name = $this->avoid_collision( $var_name );
             
-            if( ($is_assignment || $is_declaration) && !$target  ) {
+            if( ($is_assignment || $is_declaration || $is_foreach) && !$target  ) {
                 
                 if( !isset( $this->current_scope()->scope_vars[$var_name] )) {
-                    
                     $is_declaration = true;
                 
                     $parent_node = $this->_xpath_one_or_none($node, '../..');
-                    if( $parent_node->getName() == 'Eval_expr' ) {
+                    if( $parent_node->getName() == 'Eval_expr' || $is_foreach ) {
                         $this->current_scope()->scope_vars[$var_name] = 'y';
                         $this->jsbuf .= 'var ';
                     }

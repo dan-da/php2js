@@ -961,17 +961,408 @@
 				</AST:Eval_expr>
 			</AST:Statement_list>
 		</AST:Method>
+		<AST:Method>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+					<string></string>				</string_list></attr>
+				<attr key="phc.filename"><string>foreach.php</string></attr>
+				<attr key="phc.line_number"><integer>27</integer></attr>
+			</attrs>
+			<AST:Signature>
+				<attrs>
+					<attr key="phc.filename"><string>foreach.php</string></attr>
+					<attr key="phc.line_number"><integer>35</integer></attr>
+				</attrs>
+				<AST:Method_mod>
+					<attrs />
+					<bool><!-- is_public -->false</bool>
+					<bool><!-- is_protected -->false</bool>
+					<bool><!-- is_private -->false</bool>
+					<bool><!-- is_static -->false</bool>
+					<bool><!-- is_abstract -->false</bool>
+					<bool><!-- is_final -->false</bool>
+				</AST:Method_mod>
+				<bool><!-- is_ref -->false</bool>
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test3</value>
+				</AST:METHOD_NAME>
+				<AST:Formal_parameter_list>
+				</AST:Formal_parameter_list>
+			</AST:Signature>
+			<AST:Statement_list>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>foreach.php</string></attr>
+						<attr key="phc.line_number"><integer>28</integer></attr>
+					</attrs>
+					<AST:Assignment>
+						<attrs>
+							<attr key="phc.filename"><string>foreach.php</string></attr>
+							<attr key="phc.line_number"><integer>28</integer></attr>
+						</attrs>
+						<AST:Variable>
+							<attrs>
+								<attr key="phc.filename"><string>foreach.php</string></attr>
+								<attr key="phc.line_number"><integer>28</integer></attr>
+							</attrs>
+							<AST:Target xsi:nil="true" />
+							<AST:VARIABLE_NAME>
+								<attrs />
+								<value>arr</value>
+							</AST:VARIABLE_NAME>
+							<AST:Expr_list>
+							</AST:Expr_list>
+						</AST:Variable>
+						<bool><!-- is_ref -->false</bool>
+						<AST:Array>
+							<attrs>
+								<attr key="phc.filename"><string>foreach.php</string></attr>
+								<attr key="phc.line_number"><integer>28</integer></attr>
+							</attrs>
+							<AST:Array_elem_list>
+								<AST:Array_elem>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>28</integer></attr>
+									</attrs>
+									<AST:Expr xsi:nil="true" />
+									<bool><!-- is_ref -->false</bool>
+									<AST:INT>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>28</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>1</string></attr>
+										</attrs>
+										<value>0</value>
+									</AST:INT>
+								</AST:Array_elem>
+								<AST:Array_elem>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>28</integer></attr>
+									</attrs>
+									<AST:Expr xsi:nil="true" />
+									<bool><!-- is_ref -->false</bool>
+									<AST:INT>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>28</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>2</string></attr>
+										</attrs>
+										<value>0</value>
+									</AST:INT>
+								</AST:Array_elem>
+								<AST:Array_elem>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>28</integer></attr>
+									</attrs>
+									<AST:Expr xsi:nil="true" />
+									<bool><!-- is_ref -->false</bool>
+									<AST:INT>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>28</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>3</string></attr>
+										</attrs>
+										<value>0</value>
+									</AST:INT>
+								</AST:Array_elem>
+							</AST:Array_elem_list>
+						</AST:Array>
+					</AST:Assignment>
+				</AST:Eval_expr>
+				<AST:Foreach>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>foreach.php</string></attr>
+						<attr key="phc.line_number"><integer>29</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Variable>
+						<attrs>
+							<attr key="phc.filename"><string>foreach.php</string></attr>
+							<attr key="phc.line_number"><integer>29</integer></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:VARIABLE_NAME>
+							<attrs />
+							<value>arr</value>
+						</AST:VARIABLE_NAME>
+						<AST:Expr_list>
+						</AST:Expr_list>
+					</AST:Variable>
+					<AST:Variable xsi:nil="true" />
+					<bool><!-- is_ref -->false</bool>
+					<AST:Variable>
+						<attrs>
+							<attr key="phc.filename"><string>foreach.php</string></attr>
+							<attr key="phc.line_number"><integer>29</integer></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:VARIABLE_NAME>
+							<attrs />
+							<value>i</value>
+						</AST:VARIABLE_NAME>
+						<AST:Expr_list>
+						</AST:Expr_list>
+					</AST:Variable>
+					<AST:Statement_list>
+						<AST:Eval_expr>
+							<attrs>
+								<attr key="phc.comments"><string_list>
+								</string_list></attr>
+								<attr key="phc.filename"><string>foreach.php</string></attr>
+								<attr key="phc.line_number"><integer>30</integer></attr>
+							</attrs>
+							<AST:Op_assignment>
+								<attrs />
+								<AST:Variable>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>30</integer></attr>
+									</attrs>
+									<AST:Target xsi:nil="true" />
+									<AST:VARIABLE_NAME>
+										<attrs />
+										<value>i</value>
+									</AST:VARIABLE_NAME>
+									<AST:Expr_list>
+									</AST:Expr_list>
+								</AST:Variable>
+								<AST:OP>
+									<attrs />
+									<value>+</value>
+								</AST:OP>
+								<AST:INT>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>30</integer></attr>
+										<attr key="phc.unparser.source_rep"><string>1</string></attr>
+									</attrs>
+									<value>0</value>
+								</AST:INT>
+							</AST:Op_assignment>
+						</AST:Eval_expr>
+					</AST:Statement_list>
+				</AST:Foreach>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+							<string></string>						</string_list></attr>
+						<attr key="phc.filename"><string>foreach.php</string></attr>
+						<attr key="phc.line_number"><integer>33</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>foreach.php</string></attr>
+							<attr key="phc.line_number"><integer>33</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>foreach.php</string></attr>
+								<attr key="phc.line_number"><integer>33</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>foreach.php</string></attr>
+									<attr key="phc.line_number"><integer>33</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>33</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>33</integer></attr>
+											<attr key="phc.unparser.source_rep"><string>Test foreach($arr as $val) { $val += 1 }</string></attr>
+										</attrs>
+										<value>Test foreach($arr as $val) { $val += 1 }</value>
+									</AST:STRING>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>33</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>33</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPlxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPgo=</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+				<AST:Eval_expr>
+					<attrs>
+						<attr key="phc.comments"><string_list>
+						</string_list></attr>
+						<attr key="phc.filename"><string>foreach.php</string></attr>
+						<attr key="phc.line_number"><integer>34</integer></attr>
+						<attr key="phc.unparser.is_wrapped"><bool>true</bool></attr>
+					</attrs>
+					<AST:Method_invocation>
+						<attrs>
+							<attr key="phc.filename"><string>foreach.php</string></attr>
+							<attr key="phc.line_number"><integer>34</integer></attr>
+							<attr key="phc.unparser.no_brackets"><bool>true</bool></attr>
+						</attrs>
+						<AST:Target xsi:nil="true" />
+						<AST:METHOD_NAME>
+							<attrs>
+								<attr key="phc.filename"><string>foreach.php</string></attr>
+								<attr key="phc.line_number"><integer>34</integer></attr>
+							</attrs>
+							<value>echo</value>
+						</AST:METHOD_NAME>
+						<AST:Actual_parameter_list>
+							<AST:Actual_parameter>
+								<attrs>
+									<attr key="phc.filename"><string>foreach.php</string></attr>
+									<attr key="phc.line_number"><integer>34</integer></attr>
+								</attrs>
+								<bool><!-- is_ref -->false</bool>
+								<AST:Bin_op>
+									<attrs>
+										<attr key="phc.filename"><string>foreach.php</string></attr>
+										<attr key="phc.line_number"><integer>34</integer></attr>
+										<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+									</attrs>
+									<AST:Bin_op>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>34</integer></attr>
+											<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+										</attrs>
+										<AST:STRING>
+											<attrs>
+												<attr key="phc.filename"><string>foreach.php</string></attr>
+												<attr key="phc.line_number"><integer>34</integer></attr>
+												<attr key="phc.unparser.source_rep"><string>result: </string></attr>
+											</attrs>
+											<value>result: </value>
+										</AST:STRING>
+										<AST:OP>
+											<attrs>
+												<attr key="phc.filename"><string>foreach.php</string></attr>
+												<attr key="phc.line_number"><integer>34</integer></attr>
+											</attrs>
+											<value>.</value>
+										</AST:OP>
+										<AST:Conditional_expr>
+											<attrs>
+												<attr key="phc.filename"><string>foreach.php</string></attr>
+												<attr key="phc.line_number"><integer>34</integer></attr>
+												<attr key="phc.unparser.needs_user_brackets"><bool>true</bool></attr>
+											</attrs>
+											<AST:Bin_op>
+												<attrs>
+													<attr key="phc.filename"><string>foreach.php</string></attr>
+													<attr key="phc.line_number"><integer>34</integer></attr>
+													<attr key="phc.unparser.no_binop_brackets"><bool>true</bool></attr>
+												</attrs>
+												<AST:Variable>
+													<attrs>
+														<attr key="phc.filename"><string>foreach.php</string></attr>
+														<attr key="phc.line_number"><integer>34</integer></attr>
+													</attrs>
+													<AST:Target xsi:nil="true" />
+													<AST:VARIABLE_NAME>
+														<attrs />
+														<value>i</value>
+													</AST:VARIABLE_NAME>
+													<AST:Expr_list>
+													</AST:Expr_list>
+												</AST:Variable>
+												<AST:OP>
+													<attrs>
+														<attr key="phc.filename"><string>foreach.php</string></attr>
+														<attr key="phc.line_number"><integer>34</integer></attr>
+													</attrs>
+													<value>==</value>
+												</AST:OP>
+												<AST:INT>
+													<attrs>
+														<attr key="phc.filename"><string>foreach.php</string></attr>
+														<attr key="phc.line_number"><integer>34</integer></attr>
+														<attr key="phc.unparser.source_rep"><string>4</string></attr>
+													</attrs>
+													<value>0</value>
+												</AST:INT>
+											</AST:Bin_op>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>foreach.php</string></attr>
+													<attr key="phc.line_number"><integer>34</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>pass</string></attr>
+												</attrs>
+												<value>pass</value>
+											</AST:STRING>
+											<AST:STRING>
+												<attrs>
+													<attr key="phc.filename"><string>foreach.php</string></attr>
+													<attr key="phc.line_number"><integer>34</integer></attr>
+													<attr key="phc.unparser.source_rep"><string>fail</string></attr>
+												</attrs>
+												<value>fail</value>
+											</AST:STRING>
+										</AST:Conditional_expr>
+									</AST:Bin_op>
+									<AST:OP>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>34</integer></attr>
+										</attrs>
+										<value>.</value>
+									</AST:OP>
+									<AST:STRING>
+										<attrs>
+											<attr key="phc.filename"><string>foreach.php</string></attr>
+											<attr key="phc.line_number"><integer>34</integer></attr>
+											<attr key="phc.unparser.is_doubly_quoted"><bool>true</bool></attr>
+											<attr key="phc.unparser.source_rep"><string encoding="base64">PGJyPjxicj5cblxu</string></attr>
+										</attrs>
+										<value encoding="base64">PGJyPjxicj4KCg==</value>
+									</AST:STRING>
+								</AST:Bin_op>
+							</AST:Actual_parameter>
+						</AST:Actual_parameter_list>
+					</AST:Method_invocation>
+				</AST:Eval_expr>
+			</AST:Statement_list>
+		</AST:Method>
 		<AST:Eval_expr>
 			<attrs>
 				<attr key="phc.comments"><string_list>
 					<string></string>					<string></string>				</string_list></attr>
 				<attr key="phc.filename"><string>foreach.php</string></attr>
-				<attr key="phc.line_number"><integer>28</integer></attr>
+				<attr key="phc.line_number"><integer>38</integer></attr>
 			</attrs>
 			<AST:Method_invocation>
 				<attrs>
 					<attr key="phc.filename"><string>foreach.php</string></attr>
-					<attr key="phc.line_number"><integer>28</integer></attr>
+					<attr key="phc.line_number"><integer>38</integer></attr>
 				</attrs>
 				<AST:Target xsi:nil="true" />
 				<AST:METHOD_NAME>
@@ -982,13 +1373,13 @@
 					<AST:Actual_parameter>
 						<attrs>
 							<attr key="phc.filename"><string>foreach.php</string></attr>
-							<attr key="phc.line_number"><integer>28</integer></attr>
+							<attr key="phc.line_number"><integer>38</integer></attr>
 						</attrs>
 						<bool><!-- is_ref -->false</bool>
 						<AST:Variable>
 							<attrs>
 								<attr key="phc.filename"><string>foreach.php</string></attr>
-								<attr key="phc.line_number"><integer>28</integer></attr>
+								<attr key="phc.line_number"><integer>38</integer></attr>
 							</attrs>
 							<AST:Target xsi:nil="true" />
 							<AST:VARIABLE_NAME>
@@ -1007,12 +1398,12 @@
 				<attr key="phc.comments"><string_list>
 				</string_list></attr>
 				<attr key="phc.filename"><string>foreach.php</string></attr>
-				<attr key="phc.line_number"><integer>29</integer></attr>
+				<attr key="phc.line_number"><integer>39</integer></attr>
 			</attrs>
 			<AST:Method_invocation>
 				<attrs>
 					<attr key="phc.filename"><string>foreach.php</string></attr>
-					<attr key="phc.line_number"><integer>29</integer></attr>
+					<attr key="phc.line_number"><integer>39</integer></attr>
 				</attrs>
 				<AST:Target xsi:nil="true" />
 				<AST:METHOD_NAME>
@@ -1023,13 +1414,13 @@
 					<AST:Actual_parameter>
 						<attrs>
 							<attr key="phc.filename"><string>foreach.php</string></attr>
-							<attr key="phc.line_number"><integer>29</integer></attr>
+							<attr key="phc.line_number"><integer>39</integer></attr>
 						</attrs>
 						<bool><!-- is_ref -->false</bool>
 						<AST:Variable>
 							<attrs>
 								<attr key="phc.filename"><string>foreach.php</string></attr>
-								<attr key="phc.line_number"><integer>29</integer></attr>
+								<attr key="phc.line_number"><integer>39</integer></attr>
 							</attrs>
 							<AST:Target xsi:nil="true" />
 							<AST:VARIABLE_NAME>
@@ -1043,12 +1434,33 @@
 				</AST:Actual_parameter_list>
 			</AST:Method_invocation>
 		</AST:Eval_expr>
+		<AST:Eval_expr>
+			<attrs>
+				<attr key="phc.comments"><string_list>
+				</string_list></attr>
+				<attr key="phc.filename"><string>foreach.php</string></attr>
+				<attr key="phc.line_number"><integer>40</integer></attr>
+			</attrs>
+			<AST:Method_invocation>
+				<attrs>
+					<attr key="phc.filename"><string>foreach.php</string></attr>
+					<attr key="phc.line_number"><integer>40</integer></attr>
+				</attrs>
+				<AST:Target xsi:nil="true" />
+				<AST:METHOD_NAME>
+					<attrs />
+					<value>test3</value>
+				</AST:METHOD_NAME>
+				<AST:Actual_parameter_list>
+				</AST:Actual_parameter_list>
+			</AST:Method_invocation>
+		</AST:Eval_expr>
 		<AST:Nop>
 			<attrs>
 				<attr key="phc.comments"><string_list>
 					<string></string>				</string_list></attr>
 				<attr key="phc.filename"><string>foreach.php</string></attr>
-				<attr key="phc.line_number"><integer>31</integer></attr>
+				<attr key="phc.line_number"><integer>42</integer></attr>
 			</attrs>
 		</AST:Nop>
 	</AST:Statement_list>
