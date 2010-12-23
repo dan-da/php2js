@@ -80,58 +80,107 @@ function Exception(msg, code) {
 }
 
         
-___array = function() {
-    var arr = [];
-    for (var i = 0; i < ___array.arguments.length; ++i) {
-        var item = ___array.arguments[i];
-        if (item instanceof Array && item.length == 3 && item[0] == '__kv') {
-            arr[item[1]] = item[2];
+
+function ___array() {
+  var arr = [];
+  for (var i = 0; i < ___array.arguments.length; ++i) {
+    var item = ___array.arguments[i];
+    if(item instanceof Array && item.length == 3 && item[0] == '__kv') {
+        arr[item[1]] = item[2];
+    }
+    else {
+        arr.push( item );
+    }
+  }
+  return arr;
+}
+
+
+function getparam(Name, ReturnStyle, QueryString) {
+
+	var AllElements, CurElement, CurName, CurVal, ReturnVal
+
+		// Set the Name
+	Name = Name.replace(/^\s*|\s*$/g,'');
+		// Init the return
+	ReturnVal = null;
+
+		// Determine the string to use
+	if ( !QueryString ) {
+		QueryString = location.search;
+	};
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the string
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+			// Unescape and Trim the returned name
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+		if ( Name == CurName ) {
+				// Generate the array if needed
+			if ( !ReturnVal ) { ReturnVal = new Array };
+				// Get the Value
+			CurVal = CurElement[1];
+				// Determine how the value should be represented
+			if ( CurVal ) {
+				CurVal = unescape(CurVal);
+			} else {
+				CurVal = '';
+			};
+			ReturnVal[ReturnVal.length] = CurVal;
+		};
+	};
+
+        return ReturnVal;
+
+};
+
+Function.prototype.inheritsFrom = function( parentClassOrObject ){
+        p = this.prototype;
+	if ( parentClassOrObject.constructor == Function ) 
+	{
+	    for( x in parentClassOrObject ) {
+	      this[x] = parentClassOrObject[x];
+	    }
+            /* Normal Inheritance */
+            this.prototype = new parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject.prototype;
+	} 
+	else 
+	{ 
+            /* Pure Virtual Inheritance */
+            this.prototype = parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject;
+	} 
+	return this;
+}
+function prepare_str_concat(v) {if(v==undefined) v='';return v;}
+function ___echo(v) {if(typeof document=='undefined') print(v); else document.write(v);}
+
+function ___clone (o) {
+    function c(o) {
+        for (var i in o) {
+            this[i] = o[i];
         }
-        else {
-            arr.push(item);
-        }
     }
-    return arr;
-
-}
-
-;
-
-Function.prototype.inheritsFrom = function(parentClassOrObject) {
-    p = this.prototype;
-    if (parentClassOrObject.constructor == Function)
-    {
-        this.prototype = new parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject.prototype;
+    var d = new c(o);
+    if( d.__clone ) {
+        d.__clone();
     }
-    else
-    {
-        this.prototype = parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject;
-    }
-    return this;
+    return d;
 }
-
-___echo = function(v) {
-    if (typeof document == 'undefined') print(v);
-    else document.write(v);
-}
-
-
-if (typeof(window) == 'undefined') {
-    window = this;
-}
-
-
-
-
-var favorites = ___array([ "__kv", "favcolor","red"],[ "__kv", "favmovie","shawshank"],[ "__kv", "favsong","Yellow submarine"]);
+var favorites;
+favorites = ___array([ "__kv", "favcolor","red"],[ "__kv", "favmovie","shawshank"],[ "__kv", "favsong","Yellow submarine"]);
 test1 = function(favorites) {
-var buf = "";
+var buf;
+buf = "";
+var fav;
 for(var ____idx in favorites) {
-var fav=favorites[____idx];
+fav=favorites[____idx];
 buf+=fav;
 }
 ___echo("Test foreach($arr as $val)"+"<br>\n");
@@ -139,9 +188,12 @@ ___echo("result: "+(buf==="redshawshankYellow submarine"?"pass":"fail")+"<br><br
 }
 
 test2 = function(favorites) {
-var buf = "";
+var buf;
+buf = "";
+var key;
+var val;
 for(var key in favorites) {
-var val=favorites[key];
+val=favorites[key];
 buf+=""+key+": "+val+",";
 }
 ___echo("Test foreach($arr as $key => $val)"+"<br>\n");
@@ -149,9 +201,11 @@ ___echo("result: "+(buf==="favcolor: red,favmovie: shawshank,favsong: Yellow sub
 }
 
 test3 = function() {
-var arr = ___array(1,2,3);
+var arr;
+arr = ___array(1,2,3);
+var i;
 for(var ____idx in arr) {
-var i=arr[____idx];
+i=arr[____idx];
 i+=1;
 }
 ___echo("Test foreach($arr as $val) { $val += 1 }"+"<br>\n");

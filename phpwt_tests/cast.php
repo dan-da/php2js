@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * Enter description here...
+ *
+ * @param string $value
+ * @param integer $mode
+ * @return boolean
+ *
+ * @link http://www.ietf.org/rfc/rfc2396.txt
+ *
+ * @tag validator
+ * @static
+ */
 function test1() {
     $data = (integer)"2";
     

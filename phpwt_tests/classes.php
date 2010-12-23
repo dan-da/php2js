@@ -1,5 +1,7 @@
 <?php
 
+JSINCLUDE('php.js');
+
 class sibling {
     var $siblings = array();
     
@@ -97,6 +99,19 @@ function test5() {
     echo "verifying static method works<br>\n";
     echo "Result: " . (airplane::fastest() == 'blackbird' ? 'pass' : 'fail') . "<br><br>\n\n";
 }
+
+function test5a() {
+
+    class tree {
+        function type() {
+            return 'oak';
+        }
+    }
+    
+    echo "verifying static method works when not defined with static keyword<br>\n";
+    echo "Result: " . (tree::type() == 'oak' ? 'pass' : 'fail') . "<br><br>\n\n";
+}
+
 
 function test6() {
 
@@ -198,6 +213,7 @@ test2();
 test3();
 test4();
 test5();
+test5a();
 test6();
 test7();
 test8();

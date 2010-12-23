@@ -3,7 +3,7 @@
 
 function ___getall(QueryString) {
 
-	var QS, AllElements, CurElement, CurName, CurVal
+	var QS, AllElements, CurElement, CurName, CurVal;
 
 	QS = new Object();
 
@@ -80,55 +80,105 @@ function Exception(msg, code) {
 }
 
         
-___array = function() {
-    var arr = [];
-    for (var i = 0; i < ___array.arguments.length; ++i) {
-        var item = ___array.arguments[i];
-        if (item instanceof Array && item.length == 3 && item[0] == '__kv') {
-            arr[item[1]] = item[2];
+
+function ___array() {
+  var arr = [];
+  for (var i = 0; i < ___array.arguments.length; ++i) {
+    var item = ___array.arguments[i];
+    if(item instanceof Array && item.length == 3 && item[0] == '__kv') {
+        arr[item[1]] = item[2];
+    }
+    else {
+        arr.push( item );
+    }
+  }
+  return arr;
+}
+
+
+function getparam(Name, ReturnStyle, QueryString) {
+
+	var AllElements, CurElement, CurName, CurVal, ReturnVal
+
+		// Set the Name
+	Name = Name.replace(/^\s*|\s*$/g,'');
+		// Init the return
+	ReturnVal = null;
+
+		// Determine the string to use
+	if ( !QueryString ) {
+		QueryString = location.search;
+	};
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the string
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+			// Unescape and Trim the returned name
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+		if ( Name == CurName ) {
+				// Generate the array if needed
+			if ( !ReturnVal ) { ReturnVal = new Array };
+				// Get the Value
+			CurVal = CurElement[1];
+				// Determine how the value should be represented
+			if ( CurVal ) {
+				CurVal = unescape(CurVal);
+			} else {
+				CurVal = '';
+			};
+			ReturnVal[ReturnVal.length] = CurVal;
+		};
+	};
+
+        return ReturnVal;
+
+};
+
+Function.prototype.inheritsFrom = function( parentClassOrObject ){
+        p = this.prototype;
+	if ( parentClassOrObject.constructor == Function ) 
+	{
+	    for( x in parentClassOrObject ) {
+	      this[x] = parentClassOrObject[x];
+	    }
+            /* Normal Inheritance */
+            this.prototype = new parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject.prototype;
+	} 
+	else 
+	{ 
+            /* Pure Virtual Inheritance */
+            this.prototype = parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject;
+	} 
+	return this;
+}
+function prepare_str_concat(v) {if(v==undefined) v='';return v;}
+function ___echo(v) {if(typeof document=='undefined') print(v); else document.write(v);}
+
+function ___clone (o) {
+    function c(o) {
+        for (var i in o) {
+            this[i] = o[i];
         }
-        else {
-            arr.push(item);
-        }
     }
-    return arr;
-
-}
-
-;
-
-Function.prototype.inheritsFrom = function(parentClassOrObject) {
-    p = this.prototype;
-    if (parentClassOrObject.constructor == Function)
-    {
-        this.prototype = new parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject.prototype;
+    var d = new c(o);
+    if( d.__clone ) {
+        d.__clone();
     }
-    else
-    {
-        this.prototype = parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject;
-    }
-    return this;
+    return d;
 }
-
-___echo = function(v) {
-    if (typeof document == 'undefined') print(v);
-    else document.write(v);
-}
-
-
-if (typeof(window) == 'undefined') {
-    window = this;
-}
-
-
-
-
 test1 = function() {
-var foo = ___array(5,6,7,8);
+var foo;
+foo = ___array(5,6,7,8);
+var a;
+var b;
+var c;
 var ____i = 0;____tmp = foo;a = ____tmp[____i++];b = ____tmp[____i++];c = ____tmp[____i++];;
 ___echo("Test that list(\$a, \$b, \$c) work correctly<br>\n");
 ___echo("result: "+(a===5&&b==6&&c==7?"pass":"fail")+"<br><br>\n\n");

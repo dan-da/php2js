@@ -450,9 +450,9 @@ function Exception(msg, code) {
         $variable_name = $this->avoid_collision( $this->_get_value( $this->_xpath_one( $node, 'VARIABLE_NAME/value' ) ) );
         $statement_list = $this->_xpath_one( $node, 'Statement_list' );
         
-        $this->jsbuf .= sprintf( 'catch(%s if %s instanceof %s) {', $variable_name, $variable_name, $class_name );
+        $this->jsbuf .= sprintf( 'catch(%s) { if( %s instanceof %s) {', $variable_name, $variable_name, $class_name );
         $this->_statement_list( $statement_list );
-        $this->jsbuf .= '}';
+        $this->jsbuf .= '}}';
     }
 
     function _throw($node) {
@@ -1239,6 +1239,12 @@ function Exception(msg, code) {
                 if( $method_name == 'clone') {
                     $method_name = '___clone';
                 }
+// TODO: implement unset.  see core_utils.js ___unset.
+                if( $method_name == 'unset') {
+//                    $method_name = '___unset';
+		    $this->_unset( $node );
+		    return false;
+                }
 
                 $include_funcs = array( 'include', 'include_once', 'require', 'require_once');
                 if( in_array( $method_name, $include_funcs ) ) {
@@ -1344,6 +1350,34 @@ function Exception(msg, code) {
             return false;
         }
     }
+
+    /**
+     * TODO:  We should support multiple arguments to unset(a,b,c). Currently supports only unset(a)
+     */
+    function _unset( $node ) {
+        assert( 'is_object($node) && $node->getName() == "Method_invocation"' );
+        $method_name = $this->_get_value( $this->_xpath_one( $node, './METHOD_NAME/value' ) );
+        $param = $this->_xpath_one( $node, './Actual_parameter_list/Actual_parameter/child::*[3]' );
+	
+	$exp = $this->_xpath_one( $param, './Expr_list' );
+	$has_sub_exp = count($exp->children()) > 0;
+
+	$var = $this->_xpath_one_or_none( $param, './Variable' );
+	
+	$is_simple_var = !$var && !$has_sub_exp;
+	
+	if( $is_simple_var ) {
+	    $this->_any_expr( $param );
+	    $this->jsbuf .= ' = undefined';
+	}
+	else {
+	    $this->jsbuf .= 'delete ';
+	    $this->_any_expr( $param );
+	}
+	$this->jsbuf .= ';';
+    }
+    
+
     
     function _include_file( $node ) {
         assert( 'is_object($node) && $node->getName() == "Method_invocation"' );

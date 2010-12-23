@@ -36,8 +36,16 @@ function test2() {
     echo 'Result: ' . (($arr[3][3] === 'toto3') ? 'pass' : 'fail') . "<br><br>\n\n";
 }
 
+function test3() {
+    $arr[][][][] = 'far';
+    
+    echo "Test nested indexed arrays built with [].<br>\n";
+    echo 'Result: ' . (($arr[0][0][0][0] === 'far') ? 'pass' : 'fail') . "<br><br>\n\n";
+}
+
 test1();
 test2();
+test3();
        
 
 ?>

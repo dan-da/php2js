@@ -169,29 +169,6 @@ function test15() {
     echo 'result: ' . ($foo == null ? 'pass' : 'fail') . "<br><br>\n\n";
 }
 
-function test16() {
-    $orig = 6;
-    $ref =& $orig;
-    
-    $orig = 3;
-    
-    echo "Test that changing original also changes reference.<br>\n";
-    echo 'result: ' . ($ref === 3 ? 'pass' : 'fail') . "<br><br>\n\n";
-}
-
-function test17() {
-    
-    function test17_internal( &$foo ) {
-        $foo = 6;
-    }
-    
-    $bar = 3;
-    test17_internal( $bar );
-    
-    echo "Test that passing var to function by reference changes referent var.<br>\n";
-    echo 'result: ' . ($bar === 6 ? 'pass' : 'fail') . "<br><br>\n\n";
-}
-
 
 test1();
 test2();
@@ -208,7 +185,5 @@ test12();
 test13();
 test14();
 test15();
-test16();
-test17();
 
 ?>

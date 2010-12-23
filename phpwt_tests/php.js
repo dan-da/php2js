@@ -1,1 +1,1 @@
-../../../lib/_autotranslated/php.js
+../../../lib/php.js

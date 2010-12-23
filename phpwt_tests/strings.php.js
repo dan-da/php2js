@@ -3,7 +3,7 @@
 
 function ___getall(QueryString) {
 
-	var QS, AllElements, CurElement, CurName, CurVal
+	var QS, AllElements, CurElement, CurName, CurVal;
 
 	QS = new Object();
 
@@ -80,94 +80,150 @@ function Exception(msg, code) {
 }
 
         
-___array = function() {
-    var arr = [];
-    for (var i = 0; i < ___array.arguments.length; ++i) {
-        var item = ___array.arguments[i];
-        if (item instanceof Array && item.length == 3 && item[0] == '__kv') {
-            arr[item[1]] = item[2];
+
+function ___array() {
+  var arr = [];
+  for (var i = 0; i < ___array.arguments.length; ++i) {
+    var item = ___array.arguments[i];
+    if(item instanceof Array && item.length == 3 && item[0] == '__kv') {
+        arr[item[1]] = item[2];
+    }
+    else {
+        arr.push( item );
+    }
+  }
+  return arr;
+}
+
+
+function getparam(Name, ReturnStyle, QueryString) {
+
+	var AllElements, CurElement, CurName, CurVal, ReturnVal
+
+		// Set the Name
+	Name = Name.replace(/^\s*|\s*$/g,'');
+		// Init the return
+	ReturnVal = null;
+
+		// Determine the string to use
+	if ( !QueryString ) {
+		QueryString = location.search;
+	};
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the string
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+			// Unescape and Trim the returned name
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+		if ( Name == CurName ) {
+				// Generate the array if needed
+			if ( !ReturnVal ) { ReturnVal = new Array };
+				// Get the Value
+			CurVal = CurElement[1];
+				// Determine how the value should be represented
+			if ( CurVal ) {
+				CurVal = unescape(CurVal);
+			} else {
+				CurVal = '';
+			};
+			ReturnVal[ReturnVal.length] = CurVal;
+		};
+	};
+
+        return ReturnVal;
+
+};
+
+Function.prototype.inheritsFrom = function( parentClassOrObject ){
+        p = this.prototype;
+	if ( parentClassOrObject.constructor == Function ) 
+	{
+	    for( x in parentClassOrObject ) {
+	      this[x] = parentClassOrObject[x];
+	    }
+            /* Normal Inheritance */
+            this.prototype = new parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject.prototype;
+	} 
+	else 
+	{ 
+            /* Pure Virtual Inheritance */
+            this.prototype = parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject;
+	} 
+	return this;
+}
+function prepare_str_concat(v) {if(v==undefined) v='';return v;}
+function ___echo(v) {if(typeof document=='undefined') print(v); else document.write(v);}
+
+function ___clone (o) {
+    function c(o) {
+        for (var i in o) {
+            this[i] = o[i];
         }
-        else {
-            arr.push(item);
-        }
     }
-    return arr;
-
-}
-
-;
-
-Function.prototype.inheritsFrom = function(parentClassOrObject) {
-    p = this.prototype;
-    if (parentClassOrObject.constructor == Function)
-    {
-        this.prototype = new parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject.prototype;
+    var d = new c(o);
+    if( d.__clone ) {
+        d.__clone();
     }
-    else
-    {
-        this.prototype = parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject;
-    }
-    return this;
+    return d;
 }
-
-___echo = function(v) {
-    if (typeof document == 'undefined') print(v);
-    else document.write(v);
-}
-
-
-if (typeof(window) == 'undefined') {
-    window = this;
-}
-
-
-
-
 test1 = function() {
-var data = "\"";
+var data;
+data = "\"";
 ___echo("Test Double quotes embedded in a single-quote string.<br>\n");
 ___echo("result: "+(data==="\""?"pass":"fail")+"<br><br>\n\n");
 }
 
 test2 = function() {
-var data = "'";
+var data;
+data = "'";
 ___echo("Test single quotes embedded in a double-quote string.<br>\n");
 ___echo("result: "+(data==="'"?"pass":"fail")+"<br><br>\n\n");
 }
 
 test3 = function() {
-var data = "\n";
+var data;
+data = "\n";
 ___echo("Test escaped newline embedded in a double-quote string.<br>\n");
 ___echo("result: "+(data==="\n"?"pass":"fail")+"<br><br>\n\n");
 }
 
 test4 = function() {
-var data = "\\n";
+var data;
+data = "\\n";
 ___echo("Test escaped newline embedded in a single-quote string.<br>\n");
 ___echo("result: "+(data==="\\n"?"pass":"fail")+"<br><br>\n\n");
 }
 
 test5 = function() {
-var data = "1\n2";
+var data;
+data = "1\n2";
 ___echo("Test real newline in a string. (multi-line string)<br>\n");
 ___echo("result: "+(data==="1\n2"?"pass":"fail")+"<br><br>\n\n");
 }
 
 test6 = function() {
-var data = "\"";
+var data;
+data = "\"";
 ___echo("Test escaped quote in a string. <br>\n");
 ___echo("result: "+(data==="\""?"pass":"fail")+"<br><br>\n\n");
 }
 
 test7 = function() {
-var days = ___array("monday","tuesday");
-var day_idx = 1;
-var animal = "cat";
-var data = "line1 "+days[day_idx]+"\nline2 kitty_"+animal+"\nline3";
+var days;
+days = ___array("monday","tuesday");
+var day_idx;
+day_idx = 1;
+var animal;
+animal = "cat";
+var data;
+data = "line1 "+days[day_idx]+"\nline2 kitty_"+animal+"\nline3";
 ___echo("Test heredoc multiline string with embedded variables. <br>\n");
 ___echo("result: "+(data==="line1 tuesday\nline2 kitty_cat\nline3"?"pass":"fail")+"<br><br>\n\n");
 }

@@ -128,8 +128,8 @@ function test8() {
     class road {
         var $type;
         var $lanes = 2;
-        function __construct($type) {
-            $this->type = $type;
+        function __construct($rtype) {
+            $this->type = $rtype;
         }
         
         function identify() {
@@ -291,6 +291,23 @@ function test15() {
 }
 
 function test16() {
+    class hillbilly extends person {
+        public function __construct( $type ) {
+            $this->mytype = 'hb ' . $type;
+        }
+    }
+    
+    $list = array();
+    $list[] = new hillbilly( 'son' );
+    $list[] = new hillbilly( 'father' );
+    $list[] = new hillbilly( 'preacher' );
+    
+    echo "verifying instantiated objects of inherited classes are unique<br>\n";
+    echo "Result: " . ($list[2]->mytype == 'hb preacher' && $list[1]->mytype == 'hb father' && $list[0]->mytype == 'hb son' ? 'pass' : 'fail') . "<br><br>\n\n";
+}
+
+
+function test17() {
     class test16parent {
         static function add_numbers() {
             return 1 + 2;
@@ -325,6 +342,7 @@ test13();
 test14();
 test15();
 test16();
+test17();
 
 
 ?>

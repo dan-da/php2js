@@ -1,5 +1,7 @@
 <?php
 
+JSINCLUDE('php.js');
+
 define( 'GLOBAL_CONST', 'globals_r_bad');
 
 function test1() {

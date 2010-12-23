@@ -3,7 +3,7 @@
 
 function ___getall(QueryString) {
 
-	var QS, AllElements, CurElement, CurName, CurVal
+	var QS, AllElements, CurElement, CurName, CurVal;
 
 	QS = new Object();
 
@@ -80,40 +80,102 @@ function Exception(msg, code) {
 }
 
         
-;
 
-Function.prototype.inheritsFrom = function(parentClassOrObject) {
-    p = this.prototype;
-    if (parentClassOrObject.constructor == Function)
-    {
-        this.prototype = new parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject.prototype;
+function ___array() {
+  var arr = [];
+  for (var i = 0; i < ___array.arguments.length; ++i) {
+    var item = ___array.arguments[i];
+    if(item instanceof Array && item.length == 3 && item[0] == '__kv') {
+        arr[item[1]] = item[2];
     }
-    else
-    {
-        this.prototype = parentClassOrObject;
-        this.prototype.constructor = this;
-        this.prototype.__parent = parentClassOrObject;
+    else {
+        arr.push( item );
     }
-    return this;
-}
-
-___echo = function(v) {
-    if (typeof document == 'undefined') print(v);
-    else document.write(v);
+  }
+  return arr;
 }
 
 
-if (typeof(window) == 'undefined') {
-    window = this;
+function getparam(Name, ReturnStyle, QueryString) {
+
+	var AllElements, CurElement, CurName, CurVal, ReturnVal
+
+		// Set the Name
+	Name = Name.replace(/^\s*|\s*$/g,'');
+		// Init the return
+	ReturnVal = null;
+
+		// Determine the string to use
+	if ( !QueryString ) {
+		QueryString = location.search;
+	};
+		// Split the query string on the ampersand (the substring removes the question mark)
+	AllElements = QueryString.substring(1).split('&');
+
+		// Loop over the string
+	for( var Cnt = 0; Cnt < AllElements.length; Cnt++) {
+			// Split the current element on the equals sign
+		CurElement = AllElements[Cnt].split('=');
+			// Unescape and Trim the returned name
+		CurName = unescape(CurElement[0]).replace(/^\s*|\s*$/g,'');
+		if ( Name == CurName ) {
+				// Generate the array if needed
+			if ( !ReturnVal ) { ReturnVal = new Array };
+				// Get the Value
+			CurVal = CurElement[1];
+				// Determine how the value should be represented
+			if ( CurVal ) {
+				CurVal = unescape(CurVal);
+			} else {
+				CurVal = '';
+			};
+			ReturnVal[ReturnVal.length] = CurVal;
+		};
+	};
+
+        return ReturnVal;
+
+};
+
+Function.prototype.inheritsFrom = function( parentClassOrObject ){
+        p = this.prototype;
+	if ( parentClassOrObject.constructor == Function ) 
+	{
+	    for( x in parentClassOrObject ) {
+	      this[x] = parentClassOrObject[x];
+	    }
+            /* Normal Inheritance */
+            this.prototype = new parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject.prototype;
+	} 
+	else 
+	{ 
+            /* Pure Virtual Inheritance */
+            this.prototype = parentClassOrObject;
+            this.prototype.constructor = this;
+            this.prototype.__parent = parentClassOrObject;
+	} 
+	return this;
 }
+function prepare_str_concat(v) {if(v==undefined) v='';return v;}
+function ___echo(v) {if(typeof document=='undefined') print(v); else document.write(v);}
 
-
-
-
+function ___clone (o) {
+    function c(o) {
+        for (var i in o) {
+            this[i] = o[i];
+        }
+    }
+    var d = new c(o);
+    if( d.__clone ) {
+        d.__clone();
+    }
+    return d;
+}
 test1 = function() {
-var buf = null;
+var buf;
+buf = null;
 try{throw new Exception;
 }catch(e if e instanceof Exception) {buf = "The sky is falling.";
 }
@@ -122,22 +184,30 @@ ___echo("result: "+(buf=="The sky is falling."?"pass":"fail")+"<br><br>\n\n");
 }
 
 test2 = function() {
-var buf = null;
+var buf;
+buf = null;
 try{throw new Exception("The sky is falling.");
-}catch(e if e instanceof Exception) {buf = e.getMessage();
+}catch(e if e instanceof Exception) {var e;
+buf = e.getMessage();
 }
 ___echo("Test try, catch and exception with message.<br>\n");
 ___echo("result: "+(buf=="The sky is falling."?"pass":"fail")+"<br><br>\n\n");
 }
 
 test3 = function() {
-var buf = null;
-function CustomException() {CustomException.prototype.getBlurb = function() {
+var buf;
+buf = null;
+{ /* begin class CustomException */
+function CustomException() {}
+CustomException.inheritsFrom( Exception );
+CustomException.prototype.getBlurb = function() {
 return "The sky is blue.";
 }
-} {CustomException.inheritsFrom( Exception );} /* end class CustomException */
+CustomException.getBlurb = CustomException.prototype.getBlurb;
+} /* end class CustomException */
 try{throw new CustomException("The sky is falling.");
-}catch(e if e instanceof CustomException) {var buf = e.getBlurb();
+}catch(e if e instanceof CustomException) {var e;
+buf = e.getBlurb();
 }catch(e if e instanceof Exception) {buf = e.getMessage();
 }
 ___echo("Test custom exception subclass and multiple catch blocks.<br>\n");

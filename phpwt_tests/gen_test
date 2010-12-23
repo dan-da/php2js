@@ -8,7 +8,7 @@ $html_file = $test_file . '.html';
 
 echo "$test_file --> $xml_file, $js_file, $html_file.  generating...\n";
 
-$cmd = sprintf( 'phc --dump-xml=ast %s >  %s', escapeshellarg( $test_file ), escapeshellarg($xml_file) );
+$cmd = sprintf( 'phc --dump-xml=incl1 --include %s >  %s', escapeshellarg( $test_file ), escapeshellarg($xml_file) );
 my_exec( $cmd );
 
 $phpwt = dirname(__FILE__) . '/../php2js.php';
