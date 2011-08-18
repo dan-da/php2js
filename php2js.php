@@ -1068,6 +1068,11 @@ function Exception(msg, code) {
         $this->_any_expr( $expr );
         
         if( $js_func ) {
+	    if( $cast_type == 'int' ) {
+		// JS treats numbers that begin with 0 as octal. Force it to treat as base 10.
+		// See http://stackoverflow.com/questions/850341/workarounds-for-javascript-parseint-octal-bug
+		$this->jsbuf .= ', 10';
+	    }
             $this->jsbuf .= ')';
         }
     }
