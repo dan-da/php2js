@@ -3,11 +3,16 @@
 
 $files = (count($argv) > 1) ? array( $argv[1] ) : glob( '*.js' );
 
+// check for js interpreter (spidermonkey) in path.
+if( !`which js24` ) {
+    die( "Could not find 'js24' command in path.  Please install spidermonkey\n" );
+}
+
 $passed = array();
 $failed = array();
 
 foreach( $files as $file ) {
-    $cmd = 'js ' . escapeshellarg($file);
+    $cmd = 'js24 ' . escapeshellarg($file);
     $output = `$cmd`;
     
     echo "\n\n--- Results for $file ---\n";
