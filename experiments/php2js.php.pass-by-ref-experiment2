@@ -1,5 +1,3 @@
-#!/usr/bin/env php
-
 <?php
 
 if( strstr( $argv[0], 'php2js' )) {
@@ -17,38 +15,33 @@ function main($argv) {
     ini_set( 'display_errors', 'on');
     ini_set( 'memory_limit', '-1');
     assert_options( ASSERT_CALLBACK, 'assert_cb');
-    
-    $include_path = @$argv[2] ?: '.:' . dirname(__FILE__) . '/lib';
-    
-    $opts = getopt('', array('help', 'exclude-phpjs') );
-    $exclude_phpjs = isset($opts['exclude-phpjs']);
-    
-    if( !@$argv[1] || isset($opts['help']) ) {
-        print_help();
-        exit;
+
+    if( count( $argv) < 2) {
+	echo "Usage: php2js file.php.xml [extra_include_path]\n\n";
+	exit;
     }
     
-    $stripper = new stripnamespaces();
-    $dom_no_ns = $stripper->stripnamespace_from_xml_file($argv[1]);
-    $proc = new Translator( $include_path, $exclude_phpjs );
+    $include_path = '.:' . dirname(__FILE__) . '/../../lib:' . dirname($argv[1]);
+    
+    if( isset( $argv[2] ) ) {
+        $include_path .= ':' . $argv[2];
+    }
+    
+    $ext =  pathinfo($argv[1],PATHINFO_EXTENSION );
+    if( $ext == 'xml' ) {
+	$stripper = new stripnamespaces();
+	$dom_no_ns = $stripper->stripnamespace_from_xml_file($argv[1]);
+	$proc = new Translator( $include_path );
+	$js_code = $proc->translate_dom( $dom_no_ns );
+    }
+    else {
+	$parser = new PlatformParser('platform', $include_path);
+	$js_code = $parser->compile($argv[1]);
+    }
+
 //echo date('c') . "starting translation to JS\n";
-    $js_code = $proc->translate_dom( $dom_no_ns, true );
     
     echo "\n" . $js_code . "\n";
-}
-
-function print_help() {
-    echo <<< END
-    
-php2js   -- a tool to translate PHP code into JS code.
-
-Usage:
-    --help               Display usage info.
-    --exclude-phpjs      Do not include phpjs javascript library in output.
-
-
-END;
-    
 }
 
 class stripnamespaces {
@@ -134,30 +127,33 @@ class Translator {
     var $function_scope = array();
     var $include_path;
     var $class_inheritance = array();
-    var $exclude_phpjs = false;
+    var $warn_static_includes = true;
     
     static $included_files = array();
     static $defined_top_level_funcs = array();
     
-    function __construct( $include_path=null, $exclude_phpjs = false ) {
+    function __construct( $include_path=null ) {
         // add the global scope to kick things off.
         $this->function_scope[] = new func_info( 'global' );
         
         $this->set_include_path( $include_path );
-        $this->exclude_phpjs = $exclude_phpjs;
     }
     
     function set_include_path( $include_path ) {
         $this->include_path = $include_path;
     }
 
-    function translate_xml_file($filename, $optimize = true) {
+    function translate_xml_file($filename, $optimize = false) {
         $xml = new DomDocument();
         $xml->load($filename);
         return $this->translate_dom( $xml, $optimize );
     }
     
-    function translate_dom( SimpleXMLElement $dom, $optimize = true ) {
+    function translate_dom( SimpleXMLElement $dom, $optimize = false ) {
+        
+        $this->_docroot = $dom;
+	
+	$this->optimize = $optimize;
         
         $this->boilerplate();
         
@@ -176,7 +172,7 @@ class Translator {
 	    
 	    $pos = strpos( $this->jsbuf, $func->buf_start_token );
     	    if( $pos !== null ) {
-		$len = false && $func->call_count === 0 ? $func->buf_len + ($this->pretty ? 1 : 0) : strlen( $func->buf_start_token );
+		$len = $func->call_count === 0 ? $func->buf_len + ($this->pretty ? 1 : 0) : strlen( $func->buf_start_token );
 		$this->jsbuf = substr_replace( $this->jsbuf, '', $pos, $len );
 	    }
 	}
@@ -277,10 +273,8 @@ function Exception(msg, code) {
         if( $this->pretty ) {
             $this->jsbuf .= "\n";
         }
-
-        if( !$this->exclude_phpjs ) {
-            $this->_include_file_worker( 'require_once', 'phpjs.php' );
-        }
+	
+	$this->_include_file_worker( 'require_once', 'core_helpers.js', false );
     }
 
     function walk_dom(SimpleXMLElement $dom_node, $depth = 0) {
@@ -327,6 +321,7 @@ function Exception(msg, code) {
             $tmp_buf = $this->jsbuf;
             $this->jsbuf = '';
             $vars_defined_in_scope_before_statement = $this->current_scope()->scope_vars;
+            $this->_statement_ref_vars = array();
             
             $add_terminator = true;
             switch( $statement->getName() ) {
@@ -403,9 +398,15 @@ function Exception(msg, code) {
             if( $add_terminator ) {
                 $this->jsbuf .= ';';
             }
+
+            foreach( $this->_statement_ref_vars as $ref_var => $tmp_name ) {
+                $this->jsbuf .= sprintf('%s=%s.o;', $ref_var, $tmp_name );
+            }
+            
             if( $this->pretty ) {
                 $this->jsbuf .= "\n";
             }
+            
         }
     }
     
@@ -478,9 +479,9 @@ function Exception(msg, code) {
         $variable_name = $this->avoid_collision( $this->_get_value( $this->_xpath_one( $node, 'VARIABLE_NAME/value' ) ) );
         $statement_list = $this->_xpath_one( $node, 'Statement_list' );
         
-        $this->jsbuf .= sprintf( 'catch(%s) { if( %s instanceof %s) {', $variable_name, $variable_name, $class_name );
+        $this->jsbuf .= sprintf( 'catch(%s if %s instanceof %s) {', $variable_name, $variable_name, $class_name );
         $this->_statement_list( $statement_list );
-        $this->jsbuf .= '}}';
+        $this->jsbuf .= '}';
     }
 
     function _throw($node) {
@@ -543,6 +544,8 @@ function Exception(msg, code) {
                 $constructor = $this->_xpath_one_or_none( $constructor_name, "../.." );
             }
         }
+
+        $this->jsbuf .= sprintf( "{ /* begin class %s */\n", $class_name_js );
         
         if( $constructor ) {
             $this->_function( $constructor, true );
@@ -553,11 +556,10 @@ function Exception(msg, code) {
             $this->jsbuf .= '}';
         }
         
-        $this->jsbuf .= ' {';
-        $this->_member_list( $this->_xpath_one($node, 'Member_list'), 'static' );
         if( $parent_name ) {
-            $this->jsbuf .= sprintf( '%s.inheritsFrom( %s );', $class_name_js, $parent_name );
+            $this->jsbuf .= sprintf( "\n%s.inheritsFrom( %s );\n", $class_name_js, $parent_name );
         }
+        $this->_member_list( $this->_xpath_one($node, 'Member_list'), 'static' );
         $this->jsbuf .= sprintf( '} /* end class %s */', $class_name_js );
 //        $this->jsbuf .= sprintf("\n%s.prototype.constructor();", $class_name );
     }
@@ -682,7 +684,7 @@ function Exception(msg, code) {
             if( $count > 0 ) {
                 $this->jsbuf .= ',';
             }
-            $this->_callfuncparam( $param );
+            $this->_callfuncparam( $param, $count + 1 );
             $count ++;
         }
         if( count( $parameter_list )) {
@@ -863,6 +865,7 @@ function Exception(msg, code) {
         $is_class_method = $parent_node->getName() == 'Member_list';
         $modifiers = $this->_get_method_mod( $this->_xpath_one($node, 'Signature/Method_mod') );
 	$is_top_level_func = false;
+	$assign_instance_to_static = null;
         
         if( $is_class_method ) {
             $class_name = (string)$this->_get_value( $this->_xpath_one($node, '../../child::CLASS_NAME[1]/value') );
@@ -896,22 +899,32 @@ function Exception(msg, code) {
                 $class_name_js = $this->avoid_collision( $class_name );
                 if( $modifiers['is_static'] ) {
                     if( $this_or_static != 'static' ) {
+			array_pop($this->function_scope);
                         return;
                     }
                     $this->jsbuf .= sprintf("%s.%s = function(", $class_name_js, $function_name);
                     $display = true;
                 }
                 else {
-                    if( $this_or_static != 'this' ) {
+                    if( $this_or_static != 'static' ) {
+			array_pop($this->function_scope);
                         return;
                     }
                     $this->jsbuf .= sprintf("%s.prototype.%s = function(", $class_name_js, $function_name);
+		    $assign_instance_to_static = true;
                 }
                 $this->_func_args( $name_with_default );
                 $this->jsbuf .= ') {';
             }
         }
         else {
+	    if( in_array( $function_name, array('JS', 'JSINCLUDE') ) ) {
+		// these have special meaning. Sometimes they need to be defined
+		// in a PHP script so the script will run as PHP, but we don't
+		// want to actually translate them.
+		return;
+	    }
+	    
 	    $magic_tok = '__php__';
 	    if( substr($function_name, 0, strlen($magic_tok) ) == $magic_tok ) {
 		// Found the token.  Now we remove it.
@@ -920,7 +933,9 @@ function Exception(msg, code) {
 	    
 	    if( count($this->function_scope) == 2 ) {
 		$is_top_level_func = true;
-		$this->jsbuf .= top_level_func_info::gen_start_token( $function_name );
+		if( $this->optimize ) {
+		    $this->jsbuf .= top_level_func_info::gen_start_token( $function_name );
+		}
 	    }
 	    
             $this->jsbuf .= sprintf("%s = function(", $function_name);
@@ -940,13 +955,17 @@ function Exception(msg, code) {
             if( $this->pretty) {
                 $this->jsbuf .= "\n";
             }
-        }
+        }	
 
         $this->_statement_list( $statements );
         
         array_pop( $this->function_scope );
         
         $this->jsbuf .= "}\n";
+	
+	if( $assign_instance_to_static ) {
+	    $this->jsbuf .= sprintf( "%s.%s = %s.prototype.%s;\n", $class_name_js, $function_name, $class_name_js, $function_name );
+	}
 	
 	if( $is_top_level_func ) {
 	    // this is a top level function
@@ -962,7 +981,10 @@ function Exception(msg, code) {
                     $this->jsbuf .= ',';
                 }
                 $var_name = (string)$this->_name_with_default( $nwd, true );
-                $this->current_scope()->scope_vars[$var_name] = 'a';  // a for arg.
+		$is_ref = (string)$this->_xpath_one( $nwd, '../*[3]') == 'true';
+		
+		// ar = arg, pass-by reference,  av = arg, pass-by value
+                $this->current_scope()->scope_vars[$var_name] = $is_ref ? 'ar' : 'av';  
             }
         }
     }
@@ -1096,11 +1118,6 @@ function Exception(msg, code) {
         $this->_any_expr( $expr );
         
         if( $js_func ) {
-	    if( $cast_type == 'int' ) {
-		// JS treats numbers that begin with 0 as octal. Force it to treat as base 10.
-		// See http://stackoverflow.com/questions/850341/workarounds-for-javascript-parseint-octal-bug
-		$this->jsbuf .= ', 10';
-	    }
             $this->jsbuf .= ')';
         }
     }
@@ -1272,12 +1289,6 @@ function Exception(msg, code) {
                 if( $method_name == 'clone') {
                     $method_name = '___clone';
                 }
-// TODO: implement unset.  see core_utils.js ___unset.
-                if( $method_name == 'unset') {
-//                    $method_name = '___unset';
-		    $this->_unset( $node );
-		    return false;
-                }
 
                 $include_funcs = array( 'include', 'include_once', 'require', 'require_once');
                 if( in_array( $method_name, $include_funcs ) ) {
@@ -1285,7 +1296,7 @@ function Exception(msg, code) {
                     return false;
                 }
                 
-                if( $method_name == 'JS' ) {
+                if( in_array($method_name, array('JS', 'JSINCLUDE') ) ) {
                     $parameter_list = $node->xpath( './Actual_parameter_list/Actual_parameter' );
                     if( count( $parameter_list ) != 1 ){
                         throw new Exception( sprintf( "native javascript function %s must have one arg", $method_name ) );
@@ -1295,7 +1306,12 @@ function Exception(msg, code) {
                         throw new Exception( sprintf( "native javascript function %s must have constant arg.  in scope %s", $method_name, $this->function_scope[count($this->function_scope)-1]->func_name ) );
                     }
 		    $buf = $this->_stringval( $param );
-                    $this->jsbuf .= str_replace( '\$', '$', $buf );
+		    if( $method_name == 'JS' ) {
+			$this->jsbuf .= str_replace( '\$', '$', $buf );
+		    }
+		    else if( $method_name == 'JSINCLUDE' ) {
+			$this->_include_file_worker('require_once', $buf, false );
+		    }
                     return false;
                 }
 
@@ -1342,7 +1358,7 @@ function Exception(msg, code) {
             if( $count > 0 || !$need_opening_paren ) {
                 $this->jsbuf .= ',';
             }
-            $this->_callfuncparam( $param );
+            $this->_callfuncparam( $param, $count + 1 );
             $count ++;
         }
         
@@ -1358,12 +1374,20 @@ function Exception(msg, code) {
 	}
     }
     
-    function _callfuncparam($node) {
+    function _callfuncparam($node, $param_position) {
         
         assert( 'is_object($node) && $node->getName() == "Actual_parameter"' );
         
         $param = $this->_xpath_one( $node, 'child::*[3]' );
-        $this->_any_expr( $param );
+	
+	$is_var = $param->getName() == 'Variable';
+
+	if( $is_var ) {	
+	    $this->_variable($param, false, false, false, $param_position);
+	}
+	else {
+            $this->_any_expr( $param );
+	}
         
 //        echo "\n: name: " . $node_name . "\n";
         
@@ -1383,34 +1407,6 @@ function Exception(msg, code) {
             return false;
         }
     }
-
-    /**
-     * TODO:  We should support multiple arguments to unset(a,b,c). Currently supports only unset(a)
-     */
-    function _unset( $node ) {
-        assert( 'is_object($node) && $node->getName() == "Method_invocation"' );
-        $method_name = $this->_get_value( $this->_xpath_one( $node, './METHOD_NAME/value' ) );
-        $param = $this->_xpath_one( $node, './Actual_parameter_list/Actual_parameter/child::*[3]' );
-	
-	$exp = $this->_xpath_one( $param, './Expr_list' );
-	$has_sub_exp = count($exp->children()) > 0;
-
-	$var = $this->_xpath_one_or_none( $param, './Variable' );
-	
-	$is_simple_var = !$var && !$has_sub_exp;
-	
-	if( $is_simple_var ) {
-	    $this->_any_expr( $param );
-	    $this->jsbuf .= ' = undefined';
-	}
-	else {
-	    $this->jsbuf .= 'delete ';
-	    $this->_any_expr( $param );
-	}
-	$this->jsbuf .= ';';
-    }
-    
-
     
     function _include_file( $node ) {
         assert( 'is_object($node) && $node->getName() == "Method_invocation"' );
@@ -1418,7 +1414,19 @@ function Exception(msg, code) {
         $param = $this->_xpath_one( $node, './Actual_parameter_list/Actual_parameter/child::*[3]' );
 
         if( $param->getName() != 'STRING') {
-            throw new Exception( "Only static includes are supported at this time." );
+	    $message = "Only static includes are supported at this time.";
+	    if( $this->warn_static_includes ) {
+	        $message = "// Warning: $message\n";
+		$this->jsbuf .= $message;
+//		echo $message;
+		$this->jsbuf .= "$method_name(";
+		$this->_any_expr( $param );
+		$this->jsbuf .= ')';
+		return;
+	    }
+	    else {
+		throw new Exception( $message );
+	    }
         }
         $parent_node = $this->_xpath_one( $node, 'parent::*[1]' );
         
@@ -1426,36 +1434,36 @@ function Exception(msg, code) {
         if( $parent_node->getName() == 'Assignment' ) {
             throw new Exception( sprintf( "Return values from included files are not supported at this time. When including '%s'", $filename ) );
         }
-        $this->_include_file_worker( $method_name, $filename );
+	
+	$this->_include_file_worker( $method_name, $filename );
         
     }
-    
-    function _include_file_worker( $method_name, $filename ) {
+
+    function _include_file_worker( $method_name, $filename, $translate = true ) {
         $include_paths = explode( ':', $this->include_path );
 
-        $found = false;
         foreach( $include_paths as $include_path ) {
             $filepath = $include_path . DIRECTORY_SEPARATOR . $filename;
             if(file_exists( $filepath)) {
                 $filename = $filepath;
-                $found = true;
+                break;
             }
-        }
-
-        if( !$found ) {
-            throw new Exception( "Included file not found: $filename.   Include Path: " . implode( ':', $include_paths ) );
         }
         
         $filename = realpath( $filename );  // normalize path.
-        
         if( strstr( $method_name, '_once' ) && isset( self::$included_files[$filename] ) ) {
             return;
         }
+//	echo $filename . "\n";
         self::$included_files[$filename] = true;
 	
-        $parser = new PlatformParser('.', $this->include_path);
-        $this->jsbuf .= $parser->compile( $filename, false );
-	
+	if( $translate ) {
+	    $parser = new PlatformParser('.', $this->include_path);
+	    $this->jsbuf .= $parser->compile( $filename, false );
+	}
+	else {
+	    $this->jsbuf .= file_get_contents( $filename );
+	}
     }
     
     function _string( $node, $silent = false ) {
@@ -1644,7 +1652,7 @@ function Exception(msg, code) {
         return $this->js_reserved_word( $word ) && !in_array( $word, $exceptions ) ? ('_' . $word) : $word;
     }
   
-    function _variable( $node, $is_declaration = false, $is_assignment = false, $is_foreach = false ) {
+    function _variable( $node, $is_declaration = false, $is_assignment = false, $is_foreach = false, $methodcall_pos=false ) {
         assert( 'is_object($node) && $node->getName() == "Variable"' );
 
         $expr_list = $this->_xpath_one_or_none( $node, 'Expr_list');
@@ -1695,20 +1703,38 @@ function Exception(msg, code) {
             
             $var_name = $this->avoid_collision( $var_name );
             
-            if( ($is_assignment || $is_declaration || $is_foreach) && !$target  ) {
+            if( !$target && $var_name != 'this' ) {		
                 
                 if( !isset( $this->current_scope()->scope_vars[$var_name] )) {
-                    $is_declaration = true;
+                    // $is_declaration = true;
                 
                     $parent_node = $this->_xpath_one_or_none($node, '../..');
                     if( $parent_node->getName() == 'Eval_expr' || $is_foreach ) {
-                        $this->current_scope()->scope_vars[$var_name] = 'y';
-                        $this->jsbuf .= 'var ';
+                        $this->current_scope()->scope_vars[$var_name] = true;
+                        //$this->jsbuf .= 'var ';
                     }
                     else {
                         $this->current_scope()->scope_vars[$var_name] = true;
                     }
                 }
+		if( $this->current_scope()->scope_vars[$var_name] === 'ar' && !$methodcall_pos) {
+		    $var_name = "$var_name.o";
+		}
+		if( $methodcall_pos ) {
+                    $called_method_name = (string)$this->_xpath_one( $node, 'ancestor::Method_invocation[1]/METHOD_NAME/value');
+                    $called_method_target = (string)$this->_xpath_one_or_none( $node, 'ancestor::Method_invocation[1]/Target');
+                    if( !$target ) {
+                        $path = sprintf('//Signature[METHOD_NAME/value="%s"]/Formal_parameter_list/Formal_parameter[%d]/bool',$called_method_name, $methodcall_pos);
+                        $nodes = $node->xpath( $path );
+                        $is_ref = $nodes && (string)$nodes[0] === 'true';
+                        if( $is_ref ) {
+                            // Found a param that should be passed by reference.
+                            $tmp_name = sprintf('___%s_', $var_name);
+                            $this->_statement_ref_vars[$var_name] = $tmp_name;
+                            $var_name = sprintf('(%s={o:%s})', $tmp_name, $var_name );
+                        }
+                    }
+		}
             }
             $this->jsbuf .= $var_name;
             $var_name_buf .= $var_name;
@@ -1772,6 +1798,7 @@ function Exception(msg, code) {
             if( $count++ > 0) {
                 $this->jsbuf .= '][';
             }
+	    //$this->jsbuf .= (string)$elem;
             $this->_any_expr( $elem);
         }
         
@@ -1941,11 +1968,12 @@ class PlatformParser {
     }
 
     function setPlatform($platform) {
-        $this->platform = $platform;
+        $this->platform = platform;
     }
     
-    function compile( $filename, $optimize = true ) {
-            $xml_file = $filename . '.xml';
+    function compile( $filename, $optimize = false ) {
+        
+            $xml_file = './' . basename($filename) . '.xml';
             $cmd = sprintf( 'phc --dump-xml=ast %s >  %s', escapeshellarg( $filename ), escapeshellarg($xml_file) );
 
             passthru( $cmd, $rc );
@@ -1982,7 +2010,7 @@ class PlatformParser {
     }
         
     function generatePlatformFilename($file_name) {
-        @list($dirname, $module_name, $extension) = pathinfo($file_name);
+        list($dirname, $module_name, $extension) = pathinfo($file_name);
         $platform_file_name = $module_name + $this->platform + $extension;
         
         return $dirname . DIRECTORY_SEPARATOR . $this->platform_dir . DIRECTORY_SEPARATOR . $platform_file_name;
