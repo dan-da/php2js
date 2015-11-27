@@ -1908,7 +1908,7 @@ class PlatformParser {
     }
 
     function setPlatform($platform) {
-        $this->platform = platform;
+        $this->platform = $platform;
     }
     
     function compile( $filename, $optimize = true ) {
@@ -1950,7 +1950,7 @@ class PlatformParser {
     }
         
     function generatePlatformFilename($file_name) {
-        list($dirname, $module_name, $extension) = pathinfo($file_name);
+        @list($dirname, $module_name, $extension) = pathinfo($file_name);
         $platform_file_name = $module_name + $this->platform + $extension;
         
         return $dirname . DIRECTORY_SEPARATOR . $this->platform_dir . DIRECTORY_SEPARATOR . $platform_file_name;
