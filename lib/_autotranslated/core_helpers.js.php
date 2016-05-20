@@ -93,7 +93,14 @@ END_JS
 function ___echo($v){
 
 JS( <<< END_JS
-    if (typeof document == 'undefined') print(v);
+    if(typeof document=='undefined') {
+        if ( typeof(console) == 'object' && typeof console.log == 'function') {
+            console.log( v )
+        }
+        else if( typeof print == 'function' ) {
+            print(v);
+        }
+    }
     else document.write(v);
 END_JS
 );

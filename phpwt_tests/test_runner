@@ -4,8 +4,15 @@
 $files = (count($argv) > 1) ? array( $argv[1] ) : glob( '*.js' );
 
 // check for js interpreter (spidermonkey) in path.
-if( !`which js24` ) {
-    die( "Could not find 'js24' command in path.  Please install spidermonkey\n" );
+$prog = null;
+if( `which js241` ) {
+    $prog = 'js241';
+}
+else if( `which node` ) {
+    $prog = 'node';    
+}
+else {
+    die( "Could not find javascript interpreter in path.  Please install spidermonkey or nodejs\n" );
 }
 
 $passed = array();

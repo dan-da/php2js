@@ -79,15 +79,10 @@ requiring server interaction.
 
 * PHP 5.5+
 * [PHC PHP Compiler](http://www.phpcompiler.org/)
-* [SpiderMonkey Javascript engine](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey)
+* [SpiderMonkey Javascript engine](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) or nodejs.
 
-note: spidermonkey is only needed for running the test cases from the
+note: spidermonkey (or nodejs) is only needed for running the test cases from the
 command line.
-
-TODO: nodejs and other JS engines are not supported at present but would
-probably work with some simple tweaks. (nodejs fails because it does not support
-the print() function that spidermonkey does.)
-
 
 # Installing
 
